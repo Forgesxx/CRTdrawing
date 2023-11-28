@@ -146,9 +146,22 @@ function drawCRT()
   ctx.lineTo (140, 52);
   ctx.stroke();
 
-  ctx.font = "10px Arial"; // Задаем шрифт и размер
-  ctx.fillStyle = "Yellow"; // Задаем цвет текста
-  ctx.fillText("M", 80, 50);
+  ctx.beginPath();
+  ctx.moveTo(180, 45);
+  ctx.lineTo (210, 45);
+  ctx.stroke();
+
+  
+  ctx.beginPath();
+  ctx.moveTo(180, 45);
+  ctx.lineTo (210, 45);
+  ctx.stroke();
+
+  ctx.font = "10px Arial";
+  ctx.fillStyle = "Yellow";
+  ctx.fillText("H", 80, 50);
+
+
 
 
 }
