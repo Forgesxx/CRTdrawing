@@ -1,4 +1,4 @@
-function drawCRT() 
+function mainTubePart() 
 {
   var canvas = document.getElementById('canvas');
   var ctx = canvas.getContext('2d');
@@ -6,7 +6,7 @@ function drawCRT()
   ctx.beginPath();
   ctx.strokeStyle = "lime";
   ctx.moveTo(20, 75);
-  ctx.lineTo(230, 75);
+  ctx.lineTo(((canvas.width * 57.5) / 100), 75);
   ctx.stroke();
 
   ctx.beginPath();
@@ -34,6 +34,12 @@ function drawCRT()
   ctx.moveTo(350, 20);
   ctx.lineTo (350, 180);
   ctx.stroke();
+}
+function Catodes() 
+{
+  var canvas = document.getElementById('canvas');
+  var ctx = canvas.getContext('2d');
+
 
   //Catodes
   ctx.beginPath();
@@ -45,6 +51,12 @@ function drawCRT()
   ctx.moveTo(150, 110);
   ctx.lineTo (150, 125);
   ctx.stroke();
+}
+function other() 
+{
+  var canvas = document.getElementById('canvas');
+  var ctx = canvas.getContext('2d');
+
 
   //other
   ctx.beginPath();
@@ -56,7 +68,12 @@ function drawCRT()
   ctx.moveTo(60, 150);
   ctx.lineTo (150, 150);
   ctx.stroke();
-  
+}
+
+  function plastinas() 
+{
+  var canvas = document.getElementById('canvas');
+  var ctx = canvas.getContext('2d');
   //plastinas
   ctx.beginPath();
   ctx.moveTo(195,110);
@@ -77,8 +94,12 @@ function drawCRT()
   ctx.moveTo(210, 110);
   ctx.lineTo (180, 110);
   ctx.stroke();
+}
+  function other2() 
+{
+  var canvas = document.getElementById('canvas');
+  var ctx = canvas.getContext('2d');
 
-  //other
   ctx.beginPath();
   ctx.moveTo(10, 110);
   ctx.lineTo (10, 150);
@@ -99,14 +120,23 @@ function drawCRT()
   ctx.moveTo(25, 85);
   ctx.lineTo (25, 110);
   ctx.stroke();
-
+}
+function laser() 
+{
+  var canvas = document.getElementById('canvas');
+  var ctx = canvas.getContext('2d');
   //Laser
   ctx.beginPath();
   ctx.strokeStyle = "#FF2000"
   ctx.moveTo(20, 100);
   ctx.lineTo (350, 100);
   ctx.stroke(); 
+}
 
+  function Descriptions() 
+{
+  var canvas = document.getElementById('canvas');
+  var ctx = canvas.getContext('2d');
   //Descriptions
   ctx.beginPath();
   ctx.strokeStyle = "white"
@@ -233,7 +263,11 @@ function drawCRT()
   ctx.moveTo(170, 135);
   ctx.lineTo (175, 140);
   ctx.stroke();
-
+}
+function Designations() 
+{
+  var canvas = document.getElementById('canvas');
+  var ctx = canvas.getContext('2d');
   //Designations
   ctx.font = "10px Arial";
   ctx.fillStyle = "Yellow";
@@ -256,9 +290,10 @@ function drawCRT()
   ctx.fillText("L", 260, 170);
 }
 
-
-drawCRT();
-
-
-
-
+Descriptions()
+Designations()
+laser()
+mainTubePart()
+plastinas()
+other()
+other2()
