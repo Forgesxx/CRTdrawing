@@ -1,3 +1,5 @@
+//TODO: All drawing code should be moved to view.js
+
 function mainTubePart() 
 {
   var canvas = document.getElementById('canvas');
@@ -35,11 +37,11 @@ function mainTubePart()
   ctx.lineTo (350, 180);
   ctx.stroke();
 }
+
 function Catodes() 
 {
   var canvas = document.getElementById('canvas');
   var ctx = canvas.getContext('2d');
-
 
   //Catodes
   ctx.beginPath();
@@ -52,11 +54,12 @@ function Catodes()
   ctx.lineTo (150, 125);
   ctx.stroke();
 }
+
+// TODO: it shouldn't be "other". What is "other"? Is a part of what? Name it, or move it to the component it belongs to.
 function other() 
 {
   var canvas = document.getElementById('canvas');
   var ctx = canvas.getContext('2d');
-
 
   //other
   ctx.beginPath();
@@ -70,7 +73,7 @@ function other()
   ctx.stroke();
 }
 
-  function plastinas() 
+function plastinas() 
 {
   var canvas = document.getElementById('canvas');
   var ctx = canvas.getContext('2d');
@@ -95,7 +98,9 @@ function other()
   ctx.lineTo (180, 110);
   ctx.stroke();
 }
-  function other2() 
+
+// TODO: it shouldn't be "other". What is "other"? Is a part of what? Name it, or move it to the component it belongs to.
+function other2() 
 {
   var canvas = document.getElementById('canvas');
   var ctx = canvas.getContext('2d');
@@ -121,11 +126,21 @@ function other()
   ctx.lineTo (25, 110);
   ctx.stroke();
 }
-function laser() 
+
+function laser(aDeflection) 
 {
+  // TODO: aDeflection should be -1..1, it is a float point value. It could be: 0.5, 0.75, -0.11, -0.34 and so on
+  // TODO: if deflection is 0 - the laser is just a straight line
+  // TODO: if deflection is 1 - the laser finishing point should be in the bottom right corner of diagram
+  // TODO: if deflection is -1 - the laser finishing point should be in the top right corner of diagram
+  
+  let deflection = (aDeflection == undefined) ? 0 : aDeflection;
+
   var canvas = document.getElementById('canvas');
   var ctx = canvas.getContext('2d');
   //Laser
+  
+  // TODO: change straight path to bezier path
   ctx.beginPath();
   ctx.strokeStyle = "#FF2000"
   ctx.moveTo(20, 100);
@@ -133,7 +148,7 @@ function laser()
   ctx.stroke(); 
 }
 
-  function Descriptions() 
+function Descriptions() 
 {
   var canvas = document.getElementById('canvas');
   var ctx = canvas.getContext('2d');
@@ -264,6 +279,7 @@ function laser()
   ctx.lineTo (175, 140);
   ctx.stroke();
 }
+
 function Designations() 
 {
   var canvas = document.getElementById('canvas');
@@ -290,10 +306,15 @@ function Designations()
   ctx.fillText("L", 260, 170);
 }
 
-Descriptions()
-Designations()
-laser()
-mainTubePart()
-plastinas()
-other()
-other2()
+function drawDiagram()
+{
+  Descriptions();
+  Designations();
+  laser();
+  mainTubePart();
+  plastinas();
+  other();
+  other2(); 
+}
+
+window.addEventListener("load", drawDiagram);
