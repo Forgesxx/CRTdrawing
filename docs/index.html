@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>Canvas tutorial</title>
+        <!-- TODO: extract style code to separate css file -->
         <style>
   body {
       display: flex;
@@ -23,11 +24,14 @@
             }
             
         </style>
+        <script type="text/javascript" src="index.js"></script>
+        <!-- TODO: add view.js -->
+        <!-- TODO: add model.js -->
     </head>
     <body>
         <canvas id="canvas" width="400" height="200" style="width:61%;">  </canvas>
-        <script type="text/javascript" src="index.js"></script>
 
+        <!-- TODO: extract style code to separate css file -->
         <style>
     td{
         padding: 5px;
@@ -43,41 +47,41 @@
         border: 1px solid black;
         background-color: rgba(128, 128, 128, 0.438);
     }
-    
-</style>
-<table style="margin: auto;">
-    <tr>
-      <td style="font-size: 10px;">Voltage(V)<br><br>
-        <label>Uy</label><br>
-        <input type="number" id="number" name="number" min="0" style="width: 30px; font-size: 5px;"><br><br>
-        <label>Ue</label><br>
-        <input type="number" id="number" name="number" min="0" style="width: 30px; font-size: 5px;">
-        </td>
-      <td></td>
-      <br><br>
-      <td style="font-size: 10px;">Distance(mm)<br><br>
-        <label>Uy</label><br>
-        <input type="number" id="number" name="number" min="0" style="width: 30px; font-size: 5px;"><br><br>
-        <label>Ue</label><br>
-        <input type="number" id="number" name="number" min="0" style="width: 30px; font-size: 5px;"><br><br>
-        <label>Ue</label><br>
-        <input type="number" id="number" name="number" min="0" style="width: 30px; font-size: 5px;">
-        </td>
-
-        <td style="font-size: 10px;"><br><br>
-        <label>Uy</label><br>
-        <input type="number" id="number" name="number" min="0" style="width: 30px; font-size: 5px;"><br><br>
-        <label>Ue</label><br>
-        <input type="number" id="number" name="number" min="0" style="width: 30px; font-size: 5px;"><br><br>
-        <label>Ue</label><br>
-        <input type="number" id="number" name="number" min="0" style="width: 30px; font-size: 5px;">
-        </td>
-        <td style="font-size: 10px;"><br><br>
-            <label>Uy</label><br>
-            <input type="number" id="number" name="number" min="0" style="width: 30px; font-size: 5px;"><br><br>
+        </style>
+        <table style="margin: auto;">
+        <tr>
+            <!-- TODO: add onchange event listeners to inputs -->
+            <td style="font-size: 10px;">Voltage(V)<br><br>
+                <label>Uy</label><br>
+                <!-- TODO: id's should be different for each input. -->
+                <input type="number" id="number" name="number" min="0" style="width: 30px; font-size: 5px;"><br><br>
+                <label>Ue</label><br>
+                <input type="number" id="number" name="number" min="0" style="width: 30px; font-size: 5px;">
             </td>
-    </tr>
-</div>
-    </body>
-    
+            <td></td>
+            <br><br>
+            <td style="font-size: 10px;">Distance(mm)<br><br>
+                <label>Uy</label><br>
+                <input type="number" id="number" name="number" min="0" style="width: 30px; font-size: 5px;"><br><br>
+                <label>Ue</label><br>
+                <input type="number" id="number" name="number" min="0" style="width: 30px; font-size: 5px;"><br><br>
+                <label>Ue</label><br>
+                <input type="number" id="number" name="number" min="0" style="width: 30px; font-size: 5px;">
+            </td>
+
+            <td style="font-size: 10px;"><br><br>
+                <label>Uy</label><br>
+                <input type="number" id="number" name="number" min="0" style="width: 30px; font-size: 5px;"><br><br>
+                <label>Ue</label><br>
+                <input type="number" id="number" name="number" min="0" style="width: 30px; font-size: 5px;"><br><br>
+                <label>Ue</label><br>
+                <input type="number" id="number" name="number" min="0" style="width: 30px; font-size: 5px;">
+            </td>
+            <td style="font-size: 10px;"><br><br>
+                <label>Uy</label><br>
+                <input type="number" id="number" name="number" min="0" style="width: 30px; font-size: 5px;"><br><br>
+                </td>
+            </tr>
+        </div>
+    </body>    
 </html>
