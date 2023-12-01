@@ -1,18 +1,40 @@
-function TubePart(graphicParamters) 
+function TubePart(graphicParamters, ColorStyle) 
 {
   let canvas = graphicParamters.canvas;
   let ctx = canvas.getContext('2d');
 
-  // Main tube part
+  // Main tube part(dynamic)
   ctx.beginPath();
-  
+  //backPlateOfTube
   ctx.moveTo(canvas.width/100*2,canvas.height/100*30);
-  ctx.lineTo(250 ,canvas.height/100*30);
+  ctx.lineTo(canvas.width/100*2 ,canvas.height/100*70);
+  //first part of tube
+  ctx.moveTo(canvas.width/100*2,canvas.height/100*30);
+  ctx.lineTo(lineOfTube ,canvas.height/100*30);
   ctx.moveTo(canvas.width/100*2, canvas.height/100*70)
-  ctx.lineTo(250 , canvas.height/100*70)
+  ctx.lineTo(lineOfTube , canvas.height/100*70)
+  //monitor part diagonales
+  ctx.moveTo(lineOfSecondPartOfTube,canvas.height/100*70);
+  ctx.lineTo(canvas.width ,canvas.height);
+  ctx.moveTo(lineOfSecondPartOfTube, canvas.height/100*30)
+  ctx.lineTo(canvas.width , 0)
+  ctx.stroke();
+}
+function secondPartOfTube(graphicParamters)
+{
+  let canvas = graphicParamters.canvas;
+  let ctx = canvas.getContext('2d');
+  ctx.beginPath();
+  ctx.moveTo(lineOfTube,canvas.height/100*30);
+  ctx.lineTo(lineOfSecondPartOfTube ,canvas.height/100*30);
+  ctx.moveTo(lineOfTube, canvas.height/100*70);
+  ctx.lineTo(lineOfSecondPartOfTube , canvas.height/100*70);
   ctx.stroke();
 }
 
+let lineOfTube = 250;
+let lineOfSecondPartOfTube = lineOfTube + 250
+let startPoint = canvas.width/100*2;
 function laser(aDeflection) 
 {
   // TODO: aDeflection should be -1..1, it is a float point value. It could be: 0.5, 0.75, -0.11, -0.34 and so on
@@ -22,18 +44,18 @@ function laser(aDeflection)
   
   let deflection = (aDeflection == undefined) ? 0 : aDeflection;
 
-  let centerPoint {x:0, y:0};
-  let halfHeigh = canvas.height / 2;
+  // let centerPoint {x:0, y:0};
+  // let halfHeigh = canvas.height / 2;
 
-  if (deflection > 0)
-  {
-    let pointY = halfHeigh + (deflection * halfHeigh);
-  }
-  else
-  {
-    let pointY = halfHeigh - (deflection * halfHeigh);
+  // if (deflection > 0)
+  // {
+  //   let pointY = halfHeigh + (deflection * halfHeigh);
+  // }
+  // else
+  // {
+  //   let pointY = halfHeigh - (deflection * halfHeigh);
 
-  }
+  // }
   
   // var canvas = document.getElementById('canvas');
   // var ctx = canvas.getContext('2d');
@@ -49,7 +71,7 @@ function laser(aDeflection)
 
 function drawDiagram(graphicParamters)
 {
-
+  secondPartOfTube(graphicParamters)
   TubePart(graphicParamters);
 }
 
