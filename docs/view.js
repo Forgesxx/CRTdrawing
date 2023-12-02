@@ -1,8 +1,11 @@
+
+
 function TubePart(graphicParamters, ColorStyle) 
 {
   let canvas = graphicParamters.canvas;
   let ctx = canvas.getContext('2d');
 
+  let startPoint = canvas.width/100*2;
   // Main tube part(dynamic)
   ctx.beginPath();
   ctx.strokeStyle = "lime";
@@ -37,15 +40,15 @@ function secondPartOfTube(graphicParamters)
 
 let lineOfTube = 250;
 let lineOfSecondPartOfTube = lineOfTube + 250
-let startPoint = canvas.width/100*2;
-function laser(aDeflection) 
-{
+
+// function laser(aDeflection) 
+// {
   // TODO: aDeflection should be -1..1, it is a float point value. It could be: 0.5, 0.75, -0.11, -0.34 and so on
   // TODO: if deflection is 0 - the laser is just a straight line
   // TODO: if deflection is 1 - the laser finishing point should be in the bottom right corner of diagram
   // TODO: if deflection is -1 - the laser finishing point should be in the top right corner of diagram
   
-  let deflection = (aDeflection == undefined) ? 0 : aDeflection;
+//   let deflection = (aDeflection == undefined) ? 0 : aDeflection;
 
   // let centerPoint {x:0, y:0};
   // let halfHeigh = canvas.height / 2;
@@ -70,7 +73,7 @@ function laser(aDeflection)
   // ctx.moveTo(20, 100);
   // ctx.lineTo (350, 100);
   // ctx.stroke(); 
-}
+// }
 
 function drawDiagram(graphicParamters)
 {
@@ -78,4 +81,29 @@ function drawDiagram(graphicParamters)
   TubePart(graphicParamters);
 }
 
-// window.addEventListener("load", drawDiagram);
+document.addEventListener('DOMContentLoaded', function() {
+  var Uy = document.getElementById("Uy");
+  var Ue = document.getElementById("Ue");
+  var AtoPlate = document.getElementById("AtoPlate");
+  var PlatesToMonitor = document.getElementById("PlatesToMonitor");
+  var AnodesToCatodes = document.getElementById("AnodesToCatodes");
+  var BetweenThePlates = document.getElementById("BetweenThePlates");
+  var PlateLength = document.getElementById("PlateLength");
+  var SpreadForSpeed = document.getElementById("SpreadForSpeed");
+  var InitialSpeed = document.getElementById("InitialSpeed");
+  var Button = document.getElementById("StartButton");
+
+  Button.addEventListener("click", function() {
+      console.log(Uy.value);
+      console.log(Ue.value);
+      console.log(PlatesToMonitor.value);
+      console.log(AtoPlate.value);
+      console.log(AnodesToCatodes.value);
+      console.log(BetweenThePlates.value);
+      console.log(PlateLength.value);
+      console.log(SpreadForSpeed.value);
+      console.log(InitialSpeed.value);
+  });
+});
+
+window.addEventListener("load", drawDiagram);

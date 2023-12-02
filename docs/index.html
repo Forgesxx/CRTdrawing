@@ -26,7 +26,7 @@
         <!-- TODO: add model.js -->
     </head>
     <body>
-        <canvas id="canvas" width="800" height="400">  </canvas>
+        <canvas id="canvas" width="1000" height="600">  </canvas>
 
         <!-- TODO: extract style code to separate css file -->
         <style>
@@ -52,10 +52,10 @@
             <td>
                 <p>Voltage (V)</p>
                 <label for="uy">Uy</label><br>
-                <input type="number" id="uy" name="uy" min="0" value="10">
+                <input type="number" id="Uy" name="uy" min="0" value="10">
                 <br>
                 <label for="ue">Ue</label><br>
-                <input type="number" id="ue" name="ue" min="0" value="1000">
+                <input type="number" id="Ue" name="ue" min="0" value="1000">
             </td>
     
             <td>
@@ -66,32 +66,32 @@
                 <label for="PlatesToMonitor">Plates to monitor(L)</label><br>
                 <input type="number" id="PlatesToMonitor" name="PlatesToMonitor" min="1" value="150">
                 <br>
-                <label for="Anodes to Catodes">Anodes to Catodes(H)</label><br>
-                <input type="number" id="Anodes to Catodes" name="Anodes to Catodes" min="1" value="100">
+                <label for="AnodesToCatodes">Anodes to Catodes(H)</label><br>
+                <input type="number" id="AnodesToCatodes" name="Anodes to Catodes" min="1" value="100">
             </td>
     
             <td>
                 <p>Distance (mm)</p>
                 
-                <label for="Between the plates">Between the plates</label><br>
-                <input type="number" id="Between the plates" name="Between the plates" min="1" value="10">
+                <label for="BetweenThePlates">Between the plates</label><br>
+                <input type="number" id="BetweenThePlates" name="Between the plates" min="1" value="10">
                 <br>
-                <label for="ue5">Plate length</label><br>
-                <input type="number" id="Plate length" name="Plate length" min="1" value="20">
+                <label for="PlateLength">Plate length</label><br>
+                <input type="number" id="PlateLength" name="Plate length" min="1" value="20">
             </td>
     
             <td>
                 <p>Speed</p>
-                <label for="uy4">Spread for speed</label><br>
-                <input type="number" id="Spread for speed" name="Spread for speed" min="0" value="0"><br>
-                <label for="uy3">Initial speed</label><br>
-                <input type="number" id="Initial speed" name="Initial speed" min="1" value="5000000">
+                <label for="SpreadForSpeed">Spread for speed</label><br>
+                <input type="number" id="SpreadForSpeed" name="Spread for speed" min="0" value="0"><br>
+                <label for="InitialSpeed">Initial speed</label><br>
+                <input type="number" id="InitialSpeed" name="Initial speed" min="1" value="5000000">
                 <br>
             </td>
     
             <td>
                 <label for="result">Get results</label>
-                <button></button>
+                <button id="StartButton"></button>
             </td>
         </tr>
     </table>    
