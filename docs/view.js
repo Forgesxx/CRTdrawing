@@ -5,6 +5,8 @@ function TubePart(graphicParamters, ColorStyle)
 
   // Main tube part(dynamic)
   ctx.beginPath();
+  ctx.strokeStyle = "lime";
+ 
   //backPlateOfTube
   ctx.moveTo(canvas.width/100*2,canvas.height/100*30);
   ctx.lineTo(canvas.width/100*2 ,canvas.height/100*70);
@@ -24,6 +26,7 @@ function secondPartOfTube(graphicParamters)
 {
   let canvas = graphicParamters.canvas;
   let ctx = canvas.getContext('2d');
+  ctx.strokeStyle = "red";
   ctx.beginPath();
   ctx.moveTo(lineOfTube,canvas.height/100*30);
   ctx.lineTo(lineOfSecondPartOfTube ,canvas.height/100*30);

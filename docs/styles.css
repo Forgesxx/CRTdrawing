@@ -22,4 +22,30 @@ div
     width: max-content; 
     height: max-content; 
 }
+input
+{
+border: 1.5px solid black;
+width: 80px;
+text-align: center;
+font-size: 15px;
+}
+canvas 
+{
+background-color: black;
+border: 1px solid rgb(78, 74, 74);
+width: 800px; 
+height: 400px;
+}
+button
+{
+    display: middle;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-image: url(/images/buttonphoto.png);
+    background-size: cover;
+    cursor: pointer;
+}
+
+
 
