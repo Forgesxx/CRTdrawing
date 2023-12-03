@@ -8,12 +8,30 @@
 //   // TODO: if deflection is -1 - the laser finishing point should be in the top right corner of diagram
   
 //   let deflection = (aDeflection == undefined) ? 0 : aDeflection;
+
+function collectParameters()
+{
+  let result = 
+    {
+      Uy:               document.getElementById("Uy").value,
+      Ue:               document.getElementById("Ue").value,
+      AtoPlate:         document.getElementById("AtoPlate").value,
+      PlatesToMonitor:  document.getElementById("PlatesToMonitor").value,
+      AnodesToCatodes:  document.getElementById("AnodesToCatodes").value,
+      BetweenThePlates: document.getElementById("BetweenThePlates").value,
+      PlateLength:      document.getElementById("PlateLength").value,
+      SpreadForSpeed:   document.getElementById("SpreadForSpeed").value,
+      InitialSpeed:     document.getElementById("InitialSpeed").value,
+    };
+  return result;
+}
+
 function updateUI()
 {
-  //TODO: read parameters from inputs
+  let parameters = collectParameters();
+  console.log(parameters);
 
   //TODO: process parameters in model
-  
 
   let graphicParamters = { };
 

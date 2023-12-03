@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en-US">
     <link rel="stylesheet" type="text/css" href="styles.css">
@@ -8,19 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>Canvas tutorial</title>
-        <!-- TODO: extract style code to separate css file -->
-        <style>
-  body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background-color: #f0f0f0;
-    }
 
-            canvas 
-            
-        </style>
+        <link rel="stylesheet" href="styles.css">
         <script type="text/javascript" src="view.js"></script>
         <script type="text/javascript" src="index.js"></script>
         <!-- TODO: add model.js -->
@@ -28,74 +16,54 @@
     <body>
         <canvas id="canvas" width="1000" height="600">  </canvas>
 
-        <!-- TODO: extract style code to separate css file -->
-        <style>
-
-    td{
-        padding: 5px;
-    }
-    td {
-    text-align: left;
-    }
+        <table style="margin: auto;">
+            <tr>
+                <!-- TODO: add onchange event listeners to inputs -->
+                <td>
+                    <p>Voltage (V)</p>
+                    <label for="uy">Uy</label><br>
+                    <input type="number" id="Uy" name="uy" min="0" value="10" onchange="updateUI()">
+                    <br>
+                    <label for="ue">Ue</label><br>
+                    <input type="number" id="Ue" name="ue" min="0" value="1000" onchange="updateUI()">
+                </td>
     
-    td {
-    vertical-align: top;}
-    td
-    {
-        border: 1px solid black;
-        background-color: rgba(128, 128, 128, 0.438);
-    }
-        </style>
-       <table style="margin: auto;">
-        <tr>
-            <!-- TODO: add onchange event listeners to inputs -->
-            <td>
-                <p>Voltage (V)</p>
-                <label for="uy">Uy</label><br>
-                <input type="number" id="Uy" name="uy" min="0" value="10">
-                <br>
-                <label for="ue">Ue</label><br>
-                <input type="number" id="Ue" name="ue" min="0" value="1000">
-            </td>
+                <td>
+                    <p>Distance (mm)</p>
+                    <label for="AtoPlate">Anodes to plates(B)</label><br>
+                    <input type="number" id="AtoPlate" name="AtoPlate" min="1" value="30" onchange="updateUI()">
+                    <br>
+                    <label for="PlatesToMonitor">Plates to monitor(L)</label><br>
+                    <input type="number" id="PlatesToMonitor" name="PlatesToMonitor" min="1" value="150" onchange="updateUI()">
+                    <br>
+                    <label for="AnodesToCatodes">Anodes to Catodes(H)</label><br>
+                    <input type="number" id="AnodesToCatodes" name="Anodes to Catodes" min="1" value="100" onchange="updateUI()">
+                </td>
     
-            <td>
-                <p>Distance (mm)</p>
-                <label for="AtoPlate">Anodes to plates(B)</label><br>
-                <input type="number" id="AtoPlate" name="AtoPlate" min="1" value="30">
-                <br>
-                <label for="PlatesToMonitor">Plates to monitor(L)</label><br>
-                <input type="number" id="PlatesToMonitor" name="PlatesToMonitor" min="1" value="150">
-                <br>
-                <label for="AnodesToCatodes">Anodes to Catodes(H)</label><br>
-                <input type="number" id="AnodesToCatodes" name="Anodes to Catodes" min="1" value="100">
-            </td>
-    
-            <td>
-                <p>Distance (mm)</p>
+                <td>
+                    <p>Distance (mm)</p>
                 
-                <label for="BetweenThePlates">Between the plates</label><br>
-                <input type="number" id="BetweenThePlates" name="Between the plates" min="1" value="10">
-                <br>
-                <label for="PlateLength">Plate length</label><br>
-                <input type="number" id="PlateLength" name="Plate length" min="1" value="20">
-            </td>
+                    <label for="BetweenThePlates">Between the plates</label><br>
+                    <input type="number" id="BetweenThePlates" name="Between the plates" min="1" value="10" onchange="updateUI()">
+                    <br>
+                    <label for="PlateLength">Plate length</label><br>
+                    <input type="number" id="PlateLength" name="Plate length" min="1" value="20" onchange="updateUI()">
+                </td>
     
-            <td>
-                <p>Speed</p>
-                <label for="SpreadForSpeed">Spread for speed</label><br>
-                <input type="number" id="SpreadForSpeed" name="Spread for speed" min="0" value="0"><br>
-                <label for="InitialSpeed">Initial speed</label><br>
-                <input type="number" id="InitialSpeed" name="Initial speed" min="1" value="5000000">
-                <br>
-            </td>
+                <td>
+                    <p>Speed</p>
+                    <label for="SpreadForSpeed">Spread for speed</label><br>
+                    <input type="number" id="SpreadForSpeed" name="Spread for speed" min="0" value="0" onchange="updateUI()"><br>
+                    <label for="InitialSpeed">Initial speed</label><br>
+                    <input type="number" id="InitialSpeed" name="Initial speed" min="1" value="5000000" onchange="updateUI()">
+                    <br>
+                </td>
     
-            <td>
-                <label for="result">Get results</label>
-                <button id="StartButton"></button>
-            </td>
-        </tr>
-    </table>    
+                <td>
+                    <label for="result">Get results</label>
+                    <button id="StartButton" onclick="updateUI()"></button>
+                </td>
             </tr>
-        </div>
+        </table>    
     </body>    
 </html>

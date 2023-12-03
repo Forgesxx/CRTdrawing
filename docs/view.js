@@ -1,5 +1,4 @@
 
-
 function TubePart(graphicParamters, ColorStyle) 
 {
   let canvas = graphicParamters.canvas;
@@ -80,30 +79,3 @@ function drawDiagram(graphicParamters)
   secondPartOfTube(graphicParamters)
   TubePart(graphicParamters);
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-  var Uy = document.getElementById("Uy");
-  var Ue = document.getElementById("Ue");
-  var AtoPlate = document.getElementById("AtoPlate");
-  var PlatesToMonitor = document.getElementById("PlatesToMonitor");
-  var AnodesToCatodes = document.getElementById("AnodesToCatodes");
-  var BetweenThePlates = document.getElementById("BetweenThePlates");
-  var PlateLength = document.getElementById("PlateLength");
-  var SpreadForSpeed = document.getElementById("SpreadForSpeed");
-  var InitialSpeed = document.getElementById("InitialSpeed");
-  var Button = document.getElementById("StartButton");
-
-  Button.addEventListener("click", function() {
-      console.log(Uy.value);
-      console.log(Ue.value);
-      console.log(PlatesToMonitor.value);
-      console.log(AtoPlate.value);
-      console.log(AnodesToCatodes.value);
-      console.log(BetweenThePlates.value);
-      console.log(PlateLength.value);
-      console.log(SpreadForSpeed.value);
-      console.log(InitialSpeed.value);
-  });
-});
-
-window.addEventListener("load", drawDiagram);
