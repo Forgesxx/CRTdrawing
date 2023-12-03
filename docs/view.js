@@ -1,109 +1,94 @@
 
-
-function TubePart(graphicParamters, ColorStyle) 
+class View
 {
-  let canvas = graphicParamters.canvas;
-  let ctx = canvas.getContext('2d');
+  constructor(aCanvas)
+  {
+    this.canvas = aCanvas;
+    this.ctx = this.canvas.getContext('2d');
 
-  let startPoint = canvas.width/100*2;
-  // Main tube part(dynamic)
-  ctx.beginPath();
-  ctx.strokeStyle = "lime";
+    // TODO: get rid of this
+    this.lineOfTube = 250;
+    this.lineOfSecondPartOfTube = this.lineOfTube + 250
+
+  }
+
+  clearCanvas()
+  {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+
+  TubePart(graphicParamters, ColorStyle) 
+  {
+    let startPoint = canvas.width/100*2;
+    // Main tube part(dynamic)
+    this.ctx.beginPath();
+    this.ctx.strokeStyle = "lime";
  
-  //backPlateOfTube
-  ctx.moveTo(canvas.width/100*2,canvas.height/100*30);
-  ctx.lineTo(canvas.width/100*2 ,canvas.height/100*70);
-  //first part of tube
-  ctx.moveTo(canvas.width/100*2,canvas.height/100*30);
-  ctx.lineTo(lineOfTube ,canvas.height/100*30);
-  ctx.moveTo(canvas.width/100*2, canvas.height/100*70)
-  ctx.lineTo(lineOfTube , canvas.height/100*70)
-  //monitor part diagonales
-  ctx.moveTo(lineOfSecondPartOfTube,canvas.height/100*70);
-  ctx.lineTo(canvas.width ,canvas.height);
-  ctx.moveTo(lineOfSecondPartOfTube, canvas.height/100*30)
-  ctx.lineTo(canvas.width , 0)
-  ctx.stroke();
-}
-function secondPartOfTube(graphicParamters)
-{
-  let canvas = graphicParamters.canvas;
-  let ctx = canvas.getContext('2d');
-  ctx.strokeStyle = "red";
-  ctx.beginPath();
-  ctx.moveTo(lineOfTube,canvas.height/100*30);
-  ctx.lineTo(lineOfSecondPartOfTube ,canvas.height/100*30);
-  ctx.moveTo(lineOfTube, canvas.height/100*70);
-  ctx.lineTo(lineOfSecondPartOfTube , canvas.height/100*70);
-  ctx.stroke();
-}
+    //backPlateOfTube
+    this.ctx.moveTo(this.canvas.width/100*2,      this.canvas.height/100*30);
+    this.ctx.lineTo(this.canvas.width/100*2,      this.canvas.height/100*70);
+    //first part of tube
+    this.ctx.moveTo(this.canvas.width/100*2,      this.canvas.height/100*30);
+    this.ctx.lineTo(this.lineOfTube,              this.canvas.height/100*30);
+    this.ctx.moveTo(this.canvas.width/100*2,      this.canvas.height/100*70)
+    this.ctx.lineTo(this.lineOfTube ,             this.canvas.height/100*70)
+    //monitor part diagonales
+    this.ctx.moveTo(this.lineOfSecondPartOfTube,  this.canvas.height/100*70);
+    this.ctx.lineTo(this.canvas.width,            this.canvas.height);
+    this.ctx.moveTo(this.lineOfSecondPartOfTube,  this.canvas.height/100*30)
+    this.ctx.lineTo(this.canvas.width , 0)
+    this.ctx.stroke();
+  }
 
-let lineOfTube = 250;
-let lineOfSecondPartOfTube = lineOfTube + 250
-
-// function laser(aDeflection) 
-// {
-  // TODO: aDeflection should be -1..1, it is a float point value. It could be: 0.5, 0.75, -0.11, -0.34 and so on
-  // TODO: if deflection is 0 - the laser is just a straight line
-  // TODO: if deflection is 1 - the laser finishing point should be in the bottom right corner of diagram
-  // TODO: if deflection is -1 - the laser finishing point should be in the top right corner of diagram
-  
-//   let deflection = (aDeflection == undefined) ? 0 : aDeflection;
-
-  // let centerPoint {x:0, y:0};
-  // let halfHeigh = canvas.height / 2;
-
-  // if (deflection > 0)
-  // {
-  //   let pointY = halfHeigh + (deflection * halfHeigh);
-  // }
-  // else
-  // {
-  //   let pointY = halfHeigh - (deflection * halfHeigh);
-
-  // }
-  
-  // var canvas = document.getElementById('canvas');
-  // var ctx = canvas.getContext('2d');
-  // //Laser
-  
-  // // TODO: change straight path to bezier path
-  // ctx.beginPath();
-  // ctx.strokeStyle = "#FF2000"
-  // ctx.moveTo(20, 100);
-  // ctx.lineTo (350, 100);
-  // ctx.stroke(); 
-// }
-
-function drawDiagram(graphicParamters)
-{
   secondPartOfTube(graphicParamters)
-  TubePart(graphicParamters);
+  {
+    this.ctx.strokeStyle = "red";
+    this.ctx.beginPath();
+    this.ctx.moveTo(this.lineOfTube,              this.canvas.height/100*30);
+    this.ctx.lineTo(this.lineOfSecondPartOfTube,  this.canvas.height/100*30);
+    this.ctx.moveTo(this.lineOfTube,              this.canvas.height/100*70);
+    this.ctx.lineTo(this.lineOfSecondPartOfTube,  this.canvas.height/100*70);
+    this.ctx.stroke();
+  }
+
+  drawLaser(aDeflection)
+  {
+    let halfHeigh = this.canvas.height / 2;
+
+    let startPoint = { x: 0, y: halfHeigh};
+
+    let controlPoint = 
+      {
+        x: this.canvas.width / 2,
+        y: halfHeigh,
+      };
+    
+    let finishingY = halfHeigh + (halfHeigh * aDeflection);
+
+    let finishingPoint = 
+      {
+        x: this.canvas.width,
+        y: finishingY,
+      };
+    
+      this.ctx.strokeStyle = "red";
+      this.ctx.beginPath();
+      this.ctx.moveTo(startPoint.x, startPoint.y);
+      this.ctx.bezierCurveTo(controlPoint.x, controlPoint.y, controlPoint.x, controlPoint.y, finishingPoint.x, finishingPoint.y);
+
+      this.ctx.stroke();
+  }
+
+  drawDiagram(graphicParamters)
+  {
+    this.clearCanvas();
+    this.secondPartOfTube(graphicParamters)
+    this.TubePart(graphicParamters);
+    this.drawLaser(graphicParamters.laserDeflection);
+    for (let i=0; i< graphicParamters.laserDeflections.length; i++)
+    {
+      this.drawLaser(graphicParamters.laserDeflections[i]);
+    }
+  }
+
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-  var Uy = document.getElementById("Uy");
-  var Ue = document.getElementById("Ue");
-  var AtoPlate = document.getElementById("AtoPlate");
-  var PlatesToMonitor = document.getElementById("PlatesToMonitor");
-  var AnodesToCatodes = document.getElementById("AnodesToCatodes");
-  var BetweenThePlates = document.getElementById("BetweenThePlates");
-  var PlateLength = document.getElementById("PlateLength");
-  var SpreadForSpeed = document.getElementById("SpreadForSpeed");
-  var InitialSpeed = document.getElementById("InitialSpeed");
-  var Button = document.getElementById("StartButton");
-
-  Button.addEventListener("click", function() {
-      console.log(Uy.value);
-      console.log(Ue.value);
-      console.log(PlatesToMonitor.value);
-      console.log(AtoPlate.value);
-      console.log(AnodesToCatodes.value);
-      console.log(BetweenThePlates.value);
-      console.log(PlateLength.value);
-      console.log(SpreadForSpeed.value);
-      console.log(InitialSpeed.value);
-  });
-});
-
-window.addEventListener("load", drawDiagram);
