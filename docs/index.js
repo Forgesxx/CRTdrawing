@@ -26,7 +26,8 @@ function updateUI()
 
   let graphicParamters = { };
 
-  graphicParamters.laserDeflection = 0;
+  // TODO: AnodesToCatodes is not a laser deflection. Calculate correct laser deflection. this parameter was given just as temporary solution for drawing.
+  graphicParamters.laserDeflection = parameters.AnodesToCatodes / 100;
   
   view.drawDiagram(graphicParamters);
 }

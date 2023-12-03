@@ -51,6 +51,34 @@ class View
     this.ctx.stroke();
   }
 
+  drawLaser(aDeflection)
+  {
+    let halfHeigh = this.canvas.height / 2;
+
+    let startPoint = { x: 0, y: halfHeigh};
+
+    let controlPoint = 
+      {
+        x: this.canvas.width / 2,
+        y: halfHeigh,
+      };
+    
+    let finishingY = halfHeigh + (halfHeigh * aDeflection);
+
+    let finishingPoint = 
+      {
+        x: this.canvas.width,
+        y: finishingY,
+      };
+    
+      this.ctx.strokeStyle = "red";
+      this.ctx.beginPath();
+      this.ctx.moveTo(startPoint.x, startPoint.y);
+      this.ctx.bezierCurveTo(controlPoint.x, controlPoint.y, controlPoint.x, controlPoint.y, finishingPoint.x, finishingPoint.y);
+
+      this.ctx.stroke();
+  }
+
   // function laser(aDeflection) 
 // {
   // TODO: aDeflection should be -1..1, it is a float point value. It could be: 0.5, 0.75, -0.11, -0.34 and so on
@@ -90,6 +118,7 @@ class View
     this.clearCanvas();
     this.secondPartOfTube(graphicParamters)
     this.TubePart(graphicParamters);
+    this.drawLaser(graphicParamters.laserDeflection);
   }
 
 }
