@@ -1,46 +1,57 @@
 
-function TubePart(graphicParamters, ColorStyle) 
+class View
 {
-  let canvas = graphicParamters.canvas;
-  let ctx = canvas.getContext('2d');
+  constructor(aCanvas)
+  {
+    this.canvas = aCanvas;
+    this.ctx = this.canvas.getContext('2d');
 
-  let startPoint = canvas.width/100*2;
-  // Main tube part(dynamic)
-  ctx.beginPath();
-  ctx.strokeStyle = "lime";
+    // TODO: get rid of this
+    this.lineOfTube = 250;
+    this.lineOfSecondPartOfTube = this.lineOfTube + 250
+
+  }
+
+  clearCanvas()
+  {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+
+  TubePart(graphicParamters, ColorStyle) 
+  {
+    let startPoint = canvas.width/100*2;
+    // Main tube part(dynamic)
+    this.ctx.beginPath();
+    this.ctx.strokeStyle = "lime";
  
-  //backPlateOfTube
-  ctx.moveTo(canvas.width/100*2,canvas.height/100*30);
-  ctx.lineTo(canvas.width/100*2 ,canvas.height/100*70);
-  //first part of tube
-  ctx.moveTo(canvas.width/100*2,canvas.height/100*30);
-  ctx.lineTo(lineOfTube ,canvas.height/100*30);
-  ctx.moveTo(canvas.width/100*2, canvas.height/100*70)
-  ctx.lineTo(lineOfTube , canvas.height/100*70)
-  //monitor part diagonales
-  ctx.moveTo(lineOfSecondPartOfTube,canvas.height/100*70);
-  ctx.lineTo(canvas.width ,canvas.height);
-  ctx.moveTo(lineOfSecondPartOfTube, canvas.height/100*30)
-  ctx.lineTo(canvas.width , 0)
-  ctx.stroke();
-}
-function secondPartOfTube(graphicParamters)
-{
-  let canvas = graphicParamters.canvas;
-  let ctx = canvas.getContext('2d');
-  ctx.strokeStyle = "red";
-  ctx.beginPath();
-  ctx.moveTo(lineOfTube,canvas.height/100*30);
-  ctx.lineTo(lineOfSecondPartOfTube ,canvas.height/100*30);
-  ctx.moveTo(lineOfTube, canvas.height/100*70);
-  ctx.lineTo(lineOfSecondPartOfTube , canvas.height/100*70);
-  ctx.stroke();
-}
+    //backPlateOfTube
+    this.ctx.moveTo(this.canvas.width/100*2,      this.canvas.height/100*30);
+    this.ctx.lineTo(this.canvas.width/100*2,      this.canvas.height/100*70);
+    //first part of tube
+    this.ctx.moveTo(this.canvas.width/100*2,      this.canvas.height/100*30);
+    this.ctx.lineTo(this.lineOfTube,              this.canvas.height/100*30);
+    this.ctx.moveTo(this.canvas.width/100*2,      this.canvas.height/100*70)
+    this.ctx.lineTo(this.lineOfTube ,             this.canvas.height/100*70)
+    //monitor part diagonales
+    this.ctx.moveTo(this.lineOfSecondPartOfTube,  this.canvas.height/100*70);
+    this.ctx.lineTo(this.canvas.width,            this.canvas.height);
+    this.ctx.moveTo(this.lineOfSecondPartOfTube,  this.canvas.height/100*30)
+    this.ctx.lineTo(this.canvas.width , 0)
+    this.ctx.stroke();
+  }
 
-let lineOfTube = 250;
-let lineOfSecondPartOfTube = lineOfTube + 250
+  secondPartOfTube(graphicParamters)
+  {
+    this.ctx.strokeStyle = "red";
+    this.ctx.beginPath();
+    this.ctx.moveTo(this.lineOfTube,              this.canvas.height/100*30);
+    this.ctx.lineTo(this.lineOfSecondPartOfTube,  this.canvas.height/100*30);
+    this.ctx.moveTo(this.lineOfTube,              this.canvas.height/100*70);
+    this.ctx.lineTo(this.lineOfSecondPartOfTube,  this.canvas.height/100*70);
+    this.ctx.stroke();
+  }
 
-// function laser(aDeflection) 
+  // function laser(aDeflection) 
 // {
   // TODO: aDeflection should be -1..1, it is a float point value. It could be: 0.5, 0.75, -0.11, -0.34 and so on
   // TODO: if deflection is 0 - the laser is just a straight line
@@ -74,8 +85,11 @@ let lineOfSecondPartOfTube = lineOfTube + 250
   // ctx.stroke(); 
 // }
 
-function drawDiagram(graphicParamters)
-{
-  secondPartOfTube(graphicParamters)
-  TubePart(graphicParamters);
+  drawDiagram(graphicParamters)
+  {
+    this.clearCanvas();
+    this.secondPartOfTube(graphicParamters)
+    this.TubePart(graphicParamters);
+  }
+
 }
