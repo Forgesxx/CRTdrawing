@@ -16,6 +16,9 @@ function calculateDeflections(anInitialDeflection, aSpread)
         return result;
     }
 
+    result.push(anInitialDeflection - aSpread);
+    result.push(anInitialDeflection + aSpread);
+
     for (let i=0; i<numOfLasers; i++)
     {
         result.push(
