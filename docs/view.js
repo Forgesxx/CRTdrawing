@@ -55,33 +55,29 @@ class View
     this.ctx.lineTo(this.lineOfSecondPartOfTube,  this.canvas.height/100*70);
     this.ctx.stroke();
   }
-  drawLaser(aDeflection)
-  {
-    let halfHeigh = this.canvas.height / 2;
+  drawLaser(aDeflection) {
+    this.ctx.strokeStyle = "red";
+    this.ctx.beginPath();
+  
+    const startX = this.canvas.width / 2;
+    const startY = this.canvas.height / 2;
+  
+    const endX = this.canvas.width;
+    const centerY = this.canvas.height / 2; 
+  
 
-    let startPoint = { x: 0, y: halfHeigh};
-
-    let controlPoint = 
-      {
-        x: this.canvas.width / 2,
-        y: halfHeigh,
-      };
-    
-    let finishingY = halfHeigh + (halfHeigh * aDeflection);
-
-    let finishingPoint = 
-      {
-        x: this.canvas.width,
-        y: finishingY,
-      };
-    
-      this.ctx.strokeStyle = "red";
-      this.ctx.beginPath();
-      this.ctx.moveTo(startPoint.x, startPoint.y);
-      this.ctx.bezierCurveTo(controlPoint.x, controlPoint.y, controlPoint.x, controlPoint.y, finishingPoint.x, finishingPoint.y);
-
-      this.ctx.stroke();
+    const endYWithDeflection = centerY + aDeflection;
+  
+    this.ctx.moveTo(startX, startY);
+    this.ctx.lineTo(endX, endYWithDeflection);
+  
+    this.ctx.stroke();
   }
+  
+  
+  
+  
+  
 
   drawDiagram(graphicParamters)
   {
