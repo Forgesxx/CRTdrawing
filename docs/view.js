@@ -8,7 +8,8 @@ class View
 
     // TODO: get rid of this
     this.lineOfTube = 250;
-    this.lineOfSecondPartOfTube = this.lineOfTube + 250
+    this.lineOfSecondPartOfTube = this.lineOfTube + 250;
+   
 
   }
 
@@ -17,6 +18,10 @@ class View
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
+  CheckLaser()
+  {
+   
+  }
   TubePart(graphicParamters, ColorStyle) 
   {
     let startPoint = canvas.width/100*2;
@@ -50,7 +55,6 @@ class View
     this.ctx.lineTo(this.lineOfSecondPartOfTube,  this.canvas.height/100*70);
     this.ctx.stroke();
   }
-
   drawLaser(aDeflection)
   {
     let halfHeigh = this.canvas.height / 2;
@@ -90,5 +94,5 @@ class View
       this.drawLaser(graphicParamters.laserDeflections[i]);
     }
   }
-
 }
+

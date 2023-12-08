@@ -1,5 +1,4 @@
 let view = null;
-
 function collectParameters()
 {
   let result = 
@@ -13,9 +12,11 @@ function collectParameters()
       PlateLength:      document.getElementById("PlateLength").value,
       SpreadForSpeed:   document.getElementById("SpreadForSpeed").value,
       InitialSpeed:     document.getElementById("InitialSpeed").value,
+      LinePos:          document.getElementById("LinePos").value,
     };
   return result;
 }
+
 
 function updateUI()
 {
@@ -27,7 +28,7 @@ function updateUI()
   let graphicParamters = { };
 
   // TODO: AnodesToCatodes is not a laser deflection. Calculate correct laser deflection. this parameter was given just as temporary solution for drawing.
-  let deflection = parameters.AnodesToCatodes / 100;
+  let deflection = (parameters.Ue * parameters.PlatesToMonitor) / (2 * parameters.Uy);;
   let spread = parameters.SpreadForSpeed / 100;
   graphicParamters.laserDeflection = deflection;
   graphicParamters.laserDeflections = calculateDeflections(deflection, spread);
