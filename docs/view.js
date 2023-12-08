@@ -58,19 +58,18 @@ class View
   drawLaser(aDeflection) {
     this.ctx.strokeStyle = "red";
     this.ctx.beginPath();
-  
+
     const startX = this.canvas.width / 2;
     const startY = this.canvas.height / 2;
   
     const endX = this.canvas.width;
-    const centerY = this.canvas.height / 2; 
+    const centerY = this.canvas.height / 2;
   
-
     const endYWithDeflection = centerY + aDeflection;
-  
+
     this.ctx.moveTo(startX, startY);
     this.ctx.lineTo(endX, endYWithDeflection);
-  
+
     this.ctx.stroke();
   }
   
