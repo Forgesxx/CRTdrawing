@@ -1,5 +1,5 @@
 let view = null;
-function collectParameters()
+function collectInputParameters()
 {
   let result = 
     {
@@ -17,46 +17,21 @@ function collectParameters()
   return result;
 }
 
-
 function updateUI()
 {
-  const e = -1.602e-19;
-  const ElectronMass = 9.109e-31;
+  let inputParameters = collectInputParameters();
+  console.log(inputParameters);
 
-  let parameters = collectParameters();
-  console.log(parameters);
-  //calculate Ey.
-  let Ey =  (parameters.Uy / parameters.BetweenThePlates);
-  console.log("Ey:", Ey)
-  //calculate ay
+  let calculatedParameters = processParameters(inputParameters);
   
-  let Ay = (e * parameters.Uy)/(ElectronMass * parameters.BetweenThePlates);
-  console.log("Ay:", Ay)
-
-  //calculate Vz
-  let Vz = Math.sqrt(2 * Math.abs(e) * parameters.Uy / ElectronMass)
-  console.log("Vz:", Vz)
-
-  //calculate Vy
-  let Vy = (e*parameters.Uy*parameters.PlateLength)/(ElectronMass*Vz*parameters.BetweenThePlates);
-  console.log("Vy:",Vy)
-  
-  //calculate DeltaTime
-  // let DeltaTime =э
-
-  //TODO: process parameters in model
+  // TODO: display calculated parameters
 
   let graphicParamters = { };
 
-  // TODO: AnodesToCatodes is not a laser deflection. Calculate correct laser deflection. this parameter was given just as temporary solution for drawing.
-  let aDeflection = (parameters.Ue * parameters.PlatesToMonitor) / (2 * parameters.Uy);
-  let deflectionCoefficient = aDeflection/parameters.Ue
-  let deflection = deflectionCoefficient
-  console.log(aDeflection)
-  console.log(deflectionCoefficient)
-  let spread = parameters.SpreadForSpeed / 100;
-  graphicParamters.laserDeflection = deflection;
-  graphicParamters.laserDeflections = calculateDeflections(deflection, spread);
+  let spread = inputParameters.SpreadForSpeed / 100;
+  
+  graphicParamters.laserDeflection = calculatedParameters.deflection;
+  graphicParamters.laserDeflections = calculateDeflections(calculatedParameters.deflection, spread);
   
   view.drawDiagram(graphicParamters);
 }
