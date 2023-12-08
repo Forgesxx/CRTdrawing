@@ -22,6 +22,9 @@ function updateUI()
 {
   let parameters = collectParameters();
   console.log(parameters);
+  //calculate Ey.
+  let Ey =  (parameters.Uy / parameters.BetweenThePlates);
+  console.log(Ey)
 
   //TODO: process parameters in model
 
