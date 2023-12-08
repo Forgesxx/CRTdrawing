@@ -20,11 +20,26 @@ function collectParameters()
 
 function updateUI()
 {
+  const e = -1.602e-19;
+  const ElectronMass = 9.109e-31;
+
   let parameters = collectParameters();
   console.log(parameters);
   //calculate Ey.
   let Ey =  (parameters.Uy / parameters.BetweenThePlates);
-  console.log(Ey)
+  console.log("Ey:", Ey)
+  //calculate ay
+  
+  let Ay = (e * parameters.Uy)/(ElectronMass * parameters.BetweenThePlates);
+  console.log("Ay:", Ay)
+
+  //calculate Vz
+  let Vz = Math.sqrt(2 * Math.abs(e) * parameters.Uy / ElectronMass)
+  console.log("Vz:", Vz)
+
+  //calculate Vy
+  let Vy = 0;
+  
 
   //TODO: process parameters in model
 
