@@ -38,8 +38,11 @@ function updateUI()
   console.log("Vz:", Vz)
 
   //calculate Vy
-  let Vy = 0;
+  let Vy = (e*parameters.Uy*parameters.PlateLength)/(ElectronMass*Vz*parameters.BetweenThePlates);
+  console.log("Vy:",Vy)
   
+  //calculate DeltaTime
+  // let DeltaTime =э
 
   //TODO: process parameters in model
 
