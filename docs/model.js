@@ -1,4 +1,5 @@
 
+
 const numOfLasers = 10;
 
 function getRandomInRange(min, max) 
@@ -9,6 +10,8 @@ function getRandomInRange(min, max)
 function calculateDeflections(anInitialDeflection, aSpread)
 {
     let result = [];
+
+
     
     if(aSpread == 0)
     {

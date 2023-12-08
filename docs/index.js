@@ -28,7 +28,11 @@ function updateUI()
   let graphicParamters = { };
 
   // TODO: AnodesToCatodes is not a laser deflection. Calculate correct laser deflection. this parameter was given just as temporary solution for drawing.
-  let deflection = (parameters.Ue * parameters.PlatesToMonitor) / (2 * parameters.Uy);;
+  let aDeflection = (parameters.Ue * parameters.PlatesToMonitor) / (2 * parameters.Uy);
+  let deflectionCoefficient = aDeflection/parameters.Ue
+  let deflection = deflectionCoefficient
+  console.log(aDeflection)
+  console.log(deflectionCoefficient)
   let spread = parameters.SpreadForSpeed / 100;
   graphicParamters.laserDeflection = deflection;
   graphicParamters.laserDeflections = calculateDeflections(deflection, spread);
