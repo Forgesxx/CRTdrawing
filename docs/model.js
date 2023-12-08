@@ -44,11 +44,12 @@ function processParameters(inputParameters)
             Ey: (inputParameters.Uy / inputParameters.BetweenThePlates),
             Ay: (e * inputParameters.Uy)/(ElectronMass * inputParameters.BetweenThePlates),
             Vz: Math.sqrt(2 * Math.abs(e) * inputParameters.Uy / ElectronMass),
-            // TODO: calculate Vy
-            Vy: 0,
+            Vy: (e*parameters.Uy*parameters.PlateLength)/(ElectronMass*Vz*parameters.BetweenThePlates);
             deflection: deflection,
+            //TODO: DeltaTime
+            DeltaTime: 0,
         };
-    
+
     console.log(result);
     return result;
 }
