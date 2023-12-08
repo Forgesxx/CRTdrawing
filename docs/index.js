@@ -17,7 +17,6 @@ function collectInputParameters()
   return result;
 }
 
-
 function updateUI()
 {
   let inputParameters = collectInputParameters();

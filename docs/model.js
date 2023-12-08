@@ -39,12 +39,14 @@ function processParameters(inputParameters)
     let deflectionCoefficient = aDeflection/inputParameters.Ue
     let deflection = deflectionCoefficient
   
+    let Vz = Math.sqrt(2 * Math.abs(e) * inputParameters.Uy / ElectronMass);
+
     let result = 
         {
             Ey: (inputParameters.Uy / inputParameters.BetweenThePlates),
             Ay: (e * inputParameters.Uy)/(ElectronMass * inputParameters.BetweenThePlates),
-            Vz: Math.sqrt(2 * Math.abs(e) * inputParameters.Uy / ElectronMass),
-            Vy: (e*parameters.Uy*parameters.PlateLength)/(ElectronMass*Vz*parameters.BetweenThePlates);
+            Vz: Vz,
+            Vy: (e * inputParameters.Uy * inputParameters.PlateLength) / (ElectronMass * Vz * inputParameters.BetweenThePlates),
             deflection: deflection,
             //TODO: DeltaTime
             DeltaTime: 0,
