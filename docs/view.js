@@ -55,6 +55,7 @@ class View
     this.ctx.lineTo(this.lineOfSecondPartOfTube,  this.canvas.height/100*70);
     this.ctx.stroke();
   }
+
   drawLaser(aDeflection)
   {
     let halfHeigh = this.canvas.height / 2;
@@ -67,20 +68,39 @@ class View
         y: halfHeigh,
       };
     
-    let finishingY = halfHeigh + (halfHeigh * aDeflection);
-
-    let finishingPoint = 
+    let endPoint = 
       {
         x: this.canvas.width,
-        y: finishingY,
+        y: halfHeigh + (halfHeigh * aDeflection),
       };
     
-      this.ctx.strokeStyle = "red";
-      this.ctx.beginPath();
-      this.ctx.moveTo(startPoint.x, startPoint.y);
-      this.ctx.bezierCurveTo(controlPoint.x, controlPoint.y, controlPoint.x, controlPoint.y, finishingPoint.x, finishingPoint.y);
+    if (endPoint.y < 0)
+    {
+      endPoint.y = 0;
+    }
 
-      this.ctx.stroke();
+    if (endPoint.y > this.canvas.height)
+    {
+      endPoint.y = this.canvas.height;
+    }
+
+    this.ctx.strokeStyle = "red";
+    this.ctx.beginPath();
+    this.ctx.moveTo(startPoint.x, startPoint.y);
+//      this.ctx.bezierCurveTo(controlPoint.x, controlPoint.y, controlPoint.x, controlPoint.y, finishingPoint.x, finishingPoint.y);
+    this.ctx.lineTo(controlPoint.x, controlPoint.y);
+    this.ctx.lineTo(endPoint.x, endPoint.y);
+
+    this.ctx.stroke();
+  }
+
+  drawVerticalLine(linePos)
+  {
+    this.ctx.strokeStyle = "white";
+    this.ctx.beginPath();
+    this.ctx.moveTo(linePos, 0);
+    this.ctx.lineTo(linePos, this.canvas.height);
+    this.ctx.stroke();
   }
 
   drawDiagram(graphicParamters)
@@ -89,6 +109,7 @@ class View
     this.secondPartOfTube(graphicParamters)
     this.TubePart(graphicParamters);
     this.drawLaser(graphicParamters.laserDeflection);
+    this.drawVerticalLine(graphicParamters.linePos);
     for (let i=0; i< graphicParamters.laserDeflections.length; i++)
     {
       this.drawLaser(graphicParamters.laserDeflections[i]);

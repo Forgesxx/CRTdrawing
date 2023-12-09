@@ -14,7 +14,7 @@
         <script type="text/javascript" src="index.js"></script>
     </head>
     <body>
-        <input type="range" id="LinePos" name="LinePos" min="0" max="1000" class="uniqueStyle" value="1" onchange="updateUI()" ><br>
+        <input type="range" id="LinePos" name="LinePos" min="0" max="1000" class="uniqueStyle" value="1" oninput="updateUI()" ><br>
         <canvas id="canvas" width="1000" height="600">  </canvas>
 
         <table style="margin: auto;">
@@ -67,6 +67,8 @@
                 <td>
                     <label for="result">Get results</label>
                     <button id="StartButton" onclick="updateUI()"></button>
+                    <br>
+                    <label id="results"></label>
                 </td>
             </tr>
         </table>    

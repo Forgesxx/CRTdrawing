@@ -35,7 +35,11 @@ function calculateDeflections(anInitialDeflection, aSpread)
 
 function processParameters(inputParameters)
 {
+    //TODO: how to calculate deflection???
     let aDeflection = (inputParameters.Ue * inputParameters.PlatesToMonitor) / (2 * inputParameters.Uy);
+
+    // TODO: use values in pixels instead of values in milimeters.
+
     let deflectionCoefficient = aDeflection/inputParameters.Ue
     let deflection = deflectionCoefficient
   

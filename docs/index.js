@@ -17,6 +17,12 @@ function collectInputParameters()
   return result;
 }
 
+function displayCaluclatedParameters(calculatedParameters)
+{
+  // TODO: display calculated parameters
+  document.getElementById("results").value = "Ey: " + calculatedParameters.Ey;
+}
+
 function updateUI()
 {
   let inputParameters = collectInputParameters();
@@ -24,14 +30,13 @@ function updateUI()
 
   let calculatedParameters = processParameters(inputParameters);
   
-  // TODO: display calculated parameters
-
   let graphicParamters = { };
 
   let spread = inputParameters.SpreadForSpeed / 100;
   
   graphicParamters.laserDeflection = calculatedParameters.deflection;
   graphicParamters.laserDeflections = calculateDeflections(calculatedParameters.deflection, spread);
+  graphicParamters.linePos = inputParameters.LinePos;
   
   view.drawDiagram(graphicParamters);
 }
