@@ -17,11 +17,16 @@ function collectInputParameters()
   return result;
 }
 
-function displayCaluclatedParameters(calculatedParameters)
+function displayCalculatedParameters(calculatedParameters)
 {
-  // TODO: display calculated parameters
-  document.getElementById("results").value = "Ey: " + calculatedParameters.Ey;
+  document.getElementById("calculatedEy").innerHTML = calculatedParameters.Ey.toFixed(3);
+  document.getElementById("calculatedAy").innerHTML = calculatedParameters.Ay.toFixed(3);
+  document.getElementById("calculatedEy").innerHTML = calculatedParameters.Ey.toFixed(3);
+  document.getElementById("calculatedEy").innerHTML = calculatedParameters.Ey.toFixed(3);
+  document.getElementById("calculatedEy").innerHTML = calculatedParameters.Ey.toFixed(3);
+  document.getElementById("calculatedEy").innerHTML = calculatedParameters.Ey.toFixed(3);
 }
+
 
 function updateUI()
 {
@@ -39,6 +44,7 @@ function updateUI()
   graphicParamters.linePos = inputParameters.LinePos;
   
   view.drawDiagram(graphicParamters);
+  displayCalculatedParameters(calculatedParameters);
 }
 
 function onload()
