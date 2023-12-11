@@ -19,7 +19,6 @@
 
         <table style="margin: auto;">
             <tr>
-                <!-- TODO: add onchange event listeners to inputs -->
                 <td>
                     <p>Voltage (V)</p>
                     <label for="uy">Uy:</label><br>
@@ -38,10 +37,7 @@
                     <input type="number" id="PlatesToMonitor" name="PlatesToMonitor" min="1" value="150" onchange="updateUI()">
                     <br>
                     <label for="AnodesToCatodes">Anodes to Catodes(H):</label><br>
-                    <!-- TODO: temprarily commented original code. Change this input to correct values -->
-                    <!-- <input type="number" id="AnodesToCatodes" name="Anodes to Catodes" min="1" value="100" onchange="updateUI()"> -->
-                    <!-- <input type="number" id="AnodesToCatodes" name="Anodes to Catodes" min="-100" max="100" value="100" onchange="updateUI()"> -->
-                    <input type="range" id="AnodesToCatodes" name="Anodes to Catodes" min="-100" max="100" value="100" oninput="updateUI()">
+                    <input type="number" id="AnodesToCatodes" name="Anodes to Catodes" min="-100" max="100" value="100" onchange="updateUI()">
                 </td>
     
                 <td>
@@ -57,26 +53,39 @@
                 <td>
                     <p>Speed</p>
                     <label for="SpreadForSpeed">Spread for speed ±:</label><br>
-                    <!-- <input type="number" id="SpreadForSpeed" name="Spread for speed" min="0" max="100" value="0" onchange="updateUI()"><br> -->
-                    <input type="range" id="SpreadForSpeed" name="Spread for speed" min="0" max="100" value="0" oninput="updateUI()"><br>
+                    <input type="number" id="SpreadForSpeed" name="Spread for speed" min="0" max="100" value="0" onchange="updateUI()"><br>
                     <label for="InitialSpeed">Initial speed:</label><br>
                     <input type="number" id="InitialSpeed" name="Initial speed" min="1" value="5000000" onchange="updateUI()">
                     <br>
                 </td>
     
                 <td>
-                    <label for="result">Get results</label>
-                    <button id="StartButton" onclick="updateUI()", onclick ="OnButtonClick()"></button>
-                    <br>
-                    <label> Ey:</label>
-                    <output id="calculatedEy"></output><br>
-                    <label> Ay:</label>
-                    <output id="calculatedAy"></output><br>
-                    <label> Ey:</label>
-                    <output id="calculatedEy"></output><br>
-                    <label> Ey:</label>
-                    <output id="calculatedEy"></output><br>
-                    
+                    <table>
+                        <tr>
+                            <td>Vx:</td>
+                            <td><output id="calculatedVx"></output></td>
+                        </tr>
+                        <tr>
+                            <td>Vy:</td>
+                            <td><output id="calculatedVy"></output></td>
+                        </tr>
+                        <tr>
+                            <td>ax:</td>
+                            <td><output id="calculatedAx"></output></td>
+                        </tr>
+                        <tr>
+                            <td>ay:</td>
+                            <td><output id="calculatedAy"></output></td>
+                        </tr>
+                        <tr>
+                            <td>y:</td>
+                            <td><output id="calculatedY"></output></td>
+                        </tr>
+                        <tr>
+                            <td>deltay:</td>
+                            <td><output id="calculatedDeltaY"></output></td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
         </table>    
