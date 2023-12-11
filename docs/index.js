@@ -19,14 +19,13 @@ function collectInputParameters()
 
 function displayCalculatedParameters(calculatedParameters)
 {
-  document.getElementById("calculatedEy").innerHTML = calculatedParameters.Ey.toFixed(3);
-  document.getElementById("calculatedAy").innerHTML = calculatedParameters.Ay.toFixed(3);
-  document.getElementById("calculatedEy").innerHTML = calculatedParameters.Ey.toFixed(3);
-  document.getElementById("calculatedEy").innerHTML = calculatedParameters.Ey.toFixed(3);
-  document.getElementById("calculatedEy").innerHTML = calculatedParameters.Ey.toFixed(3);
-  document.getElementById("calculatedEy").innerHTML = calculatedParameters.Ey.toFixed(3);
+    document.getElementById("calculatedVx").innerHTML = calculatedParameters.Vx.toFixed(3);
+    document.getElementById("calculatedVy").innerHTML = calculatedParameters.Vy.toFixed(3);
+    document.getElementById("calculatedAx").innerHTML = calculatedParameters.Ax.toFixed(3);
+    document.getElementById("calculatedAy").innerHTML = calculatedParameters.Ay.toFixed(3);
+    document.getElementById("calculatedY").innerHTML = calculatedParameters.Y.toFixed(3);
+    document.getElementById("calculatedDeltaY").innerHTML = calculatedParameters.DeltaY.toFixed(3);
 }
-
 
 function updateUI()
 {

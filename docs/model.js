@@ -47,10 +47,20 @@ function processParameters(inputParameters)
 
     let result = 
         {
-            Ey: (inputParameters.Uy / inputParameters.BetweenThePlates),
-            Ay: (e * inputParameters.Uy)/(ElectronMass * inputParameters.BetweenThePlates),
-            Vz: Vz,
+// parameters that will be displayed
+            // TODO: calculate Vx
+            Vx: 0,
             Vy: (e * inputParameters.Uy * inputParameters.PlateLength) / (ElectronMass * Vz * inputParameters.BetweenThePlates),
+            // TODO: calculate Ax
+            Ax: 0,
+            Ay: (e * inputParameters.Uy)/(ElectronMass * inputParameters.BetweenThePlates),
+            // TODO: calculate Y
+            Y: 0,
+            // TODO: calculate deltaY
+            DeltaY: 0, 
+// ------
+            Ey: (inputParameters.Uy / inputParameters.BetweenThePlates),
+            Vz: Vz,
             deflection: deflection,
             //TODO: DeltaTime
             DeltaTime: 0,
