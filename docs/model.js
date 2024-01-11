@@ -1,19 +1,18 @@
-
 const numOfLasers = 10;
 
 const e = -1.602e-19;
 const ElectronMass = 9.109e-31;
 
-function getRandomInRange(min, max) 
+function getRandomInRange(min, max)
 {
     return Math.random() * (max - min) + min;
 }
 
 function calculateDeflections(anInitialDeflection, aSpread)
 {
-    let result = [];
+    const result = [];
 
-    if(aSpread == 0)
+    if (aSpread === 0)
     {
         result.push(anInitialDeflection);
         return result;
@@ -22,7 +21,7 @@ function calculateDeflections(anInitialDeflection, aSpread)
     result.push(anInitialDeflection - aSpread);
     result.push(anInitialDeflection + aSpread);
 
-    for (let i=0; i<numOfLasers; i++)
+    for (let i = 0; i < numOfLasers; i++)
     {
         result.push(
             getRandomInRange(
@@ -35,34 +34,33 @@ function calculateDeflections(anInitialDeflection, aSpread)
 
 function processParameters(inputParameters)
 {
-    //TODO: how to calculate deflection???
+    // TODO: how to calculate deflection???
     let aDeflection = (inputParameters.Ue * inputParameters.PlatesToMonitor) / (2 * inputParameters.Uy);
 
     // TODO: use values in pixels instead of values in milimeters.
 
-    let deflectionCoefficient = aDeflection/inputParameters.Ue
-    let deflection = deflectionCoefficient
-  
-    let Vz = Math.sqrt(2 * Math.abs(e) * inputParameters.Uy / ElectronMass);
+    aDeflection = aDeflection / inputParameters.Ue;
 
-    let result = 
+    const aVz = Math.sqrt(2 * Math.abs(e) * inputParameters.Uy / ElectronMass);
+
+    const result =
         {
-// parameters that will be displayed
+        // parameters that will be displayed
             // TODO: calculate Vx
             Vx: 0,
-            Vy: (e * inputParameters.Uy * inputParameters.PlateLength) / (ElectronMass * Vz * inputParameters.BetweenThePlates),
+            Vy: (e * inputParameters.Uy * inputParameters.PlateLength) / (ElectronMass * aVz * inputParameters.BetweenThePlates),
             // TODO: calculate Ax
             Ax: 0,
-            Ay: (e * inputParameters.Uy)/(ElectronMass * inputParameters.BetweenThePlates),
+            Ay: (e * inputParameters.Uy) / (ElectronMass * inputParameters.BetweenThePlates),
             // TODO: calculate Y
             Y: 0,
             // TODO: calculate deltaY
-            DeltaY: 0, 
-// ------
+            DeltaY: 0,
+            // ------
             Ey: (inputParameters.Uy / inputParameters.BetweenThePlates),
-            Vz: Vz,
-            deflection: deflection,
-            //TODO: DeltaTime
+            Vz: aVz,
+            deflection: aDeflection,
+            // TODO: DeltaTime
             DeltaTime: 0,
         };
 

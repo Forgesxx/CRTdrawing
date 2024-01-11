@@ -1,20 +1,20 @@
 let view = null;
 function collectInputParameters()
 {
-  let result = 
+    const result =
     {
-      Uy:               document.getElementById("Uy").value,
-      Ue:               document.getElementById("Ue").value,
-      AtoPlate:         document.getElementById("AtoPlate").value,
-      PlatesToMonitor:  document.getElementById("PlatesToMonitor").value,
-      AnodesToCatodes:  document.getElementById("AnodesToCatodes").value,
-      BetweenThePlates: document.getElementById("BetweenThePlates").value,
-      PlateLength:      document.getElementById("PlateLength").value,
-      SpreadForSpeed:   document.getElementById("SpreadForSpeed").value,
-      InitialSpeed:     document.getElementById("InitialSpeed").value,
-      LinePos:          document.getElementById("LinePos").value,
+        Uy:               document.getElementById("Uy").value,
+        Ue:               document.getElementById("Ue").value,
+        AtoPlate:         document.getElementById("AtoPlate").value,
+        PlatesToMonitor:  document.getElementById("PlatesToMonitor").value,
+        AnodesToCatodes:  document.getElementById("AnodesToCatodes").value,
+        BetweenThePlates: document.getElementById("BetweenThePlates").value,
+        PlateLength:      document.getElementById("PlateLength").value,
+        SpreadForSpeed:   document.getElementById("SpreadForSpeed").value,
+        InitialSpeed:     document.getElementById("InitialSpeed").value,
+        LinePos:          document.getElementById("LinePos").value,
     };
-  return result;
+    return result;
 }
 
 function displayCalculatedParameters(calculatedParameters)
@@ -29,27 +29,27 @@ function displayCalculatedParameters(calculatedParameters)
 
 function updateUI()
 {
-  let inputParameters = collectInputParameters();
-  console.log(inputParameters);
+    const inputParameters = collectInputParameters();
+    console.log(inputParameters);
 
-  let calculatedParameters = processParameters(inputParameters);
-  
-  let graphicParamters = { };
+    const calculatedParameters = processParameters(inputParameters);
 
-  let spread = inputParameters.SpreadForSpeed / 100;
-  
-  graphicParamters.laserDeflection = calculatedParameters.deflection;
-  graphicParamters.laserDeflections = calculateDeflections(calculatedParameters.deflection, spread);
-  graphicParamters.linePos = inputParameters.LinePos;
-  
-  view.drawDiagram(graphicParamters);
-  displayCalculatedParameters(calculatedParameters);
+    const graphicParamters = { };
+
+    const spread = inputParameters.SpreadForSpeed / 100;
+
+    graphicParamters.laserDeflection = calculatedParameters.deflection;
+    graphicParamters.laserDeflections = calculateDeflections(calculatedParameters.deflection, spread);
+    graphicParamters.linePos = inputParameters.LinePos;
+
+    view.drawDiagram(graphicParamters);
+    displayCalculatedParameters(calculatedParameters);
 }
 
 function onload()
 {
-  view = new View(document.getElementById('canvas'));
-  updateUI();
+    view = new View(document.getElementById('canvas'));
+    updateUI();
 }
 
 window.addEventListener("load", onload);
