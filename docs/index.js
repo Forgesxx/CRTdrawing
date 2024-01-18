@@ -3,17 +3,17 @@ function collectInputParameters()
 {
     const result =
     {
-        Uy:               document.getElementById("Uy").value,
-        Ua:               document.getElementById("Ua").value,
-        AtoPlate:         document.getElementById("AtoPlate").value,
-        PlatesToMonitor:  document.getElementById("PlatesToMonitor").value,
-        AnodesToCatodes:  document.getElementById("AnodesToCatodes").value,
-        BetweenThePlates: document.getElementById("BetweenThePlates").value,
-        PlateLength:      document.getElementById("PlateLength").value,
-        SpreadForSpeed:   document.getElementById("SpreadForSpeed").value,
-        InitialSpeed:     document.getElementById("InitialSpeed").value,
-        LinePos:          document.getElementById("LinePos").value,
-        Cuantity:         document.getElementById("cuantity").value,
+        Uy:               Number(document.getElementById("Uy").value),
+        Ua:               Number(document.getElementById("Ua").value),
+        B:                Number(document.getElementById("B").value),
+        L:                Number(document.getElementById("L").value),
+        H:                Number(document.getElementById("H").value),
+        d:                Number(document.getElementById("d").value),
+        l:                Number(document.getElementById("l").value),
+        SpreadForSpeed:   Number(document.getElementById("SpreadForSpeed").value),
+        InitialSpeed:     Number(document.getElementById("InitialSpeed").value),
+        LinePos:          Number(document.getElementById("LinePos").value),
+        Cuantity:         Number(document.getElementById("cuantity").value),
     };
     return result;
 }

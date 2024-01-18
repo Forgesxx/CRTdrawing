@@ -1,7 +1,7 @@
 const numOfLasers = 10;
 
 const e = -1.602e-19;
-const ElectronMass = 9.109e-31;
+const m = 9.109e-31; // Electron Mass
 
 function getRandomInRange(min, max)
 {
@@ -35,29 +35,44 @@ function calculateDeflections(anInitialDeflection, aSpread)
 function processParameters(inputParameters)
 {
     // TODO: how to calculate deflection???
-    let aDeflection = (inputParameters.Ua * inputParameters.PlatesToMonitor) / (2 * inputParameters.Uy);
+    const L = inputParameters.L;
+    const Ua = inputParameters.Ua;
+    const Uy = inputParameters.Uy;
+    const B = inputParameters.B;
+    const H = inputParameters.H;
+    const d = inputParameters.d;
+    const l = inputParameters.l;
+
+    let aDeflection = (Ua * L) / (2 * Uy);
 
     // TODO: use values in pixels instead of values in milimeters.
 
-    aDeflection = aDeflection / inputParameters.Ua;
+    aDeflection = aDeflection / Ua;
 
-    const aVz = Math.sqrt(2 * Math.abs(e) * inputParameters.Uy / ElectronMass);
+    const h = (Uy * L * e) / (2 * d * Ua);
+
+    // -------------------------------------
+    const Ey = (Uy / d);
+    const Ay = (e * Uy) / (m * d);
+    const Vz = Math.sqrt(2 * Math.abs(e) * Uy / m);
+    const Vy = (e * Uy * l) / (m * Vz * d);
+    // -------------------------------------
 
     const result =
         {
             // TODO: calculate Vx
             Vx: 0,
-            Vy: (e * inputParameters.Uy * inputParameters.PlateLength) / (ElectronMass * aVz * inputParameters.BetweenThePlates),
+            Vy,
             // TODO: calculate Ax
             Ax: 0,
-            Ay: (e * inputParameters.Uy) / (ElectronMass * inputParameters.BetweenThePlates),
+            Ay,
             // TODO: calculate Y
-            Y: 0,
+            Y: h,
             // TODO: calculate deltaY
             DeltaY: 0,
             // ------
-            Ey: (inputParameters.Uy / inputParameters.BetweenThePlates),
-            Vz: aVz,
+            Ey,
+            Vz,
             deflection: aDeflection,
             // TODO: DeltaTime
             DeltaTime: 0,
