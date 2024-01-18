@@ -4,10 +4,14 @@ class View
     {
         this.canvas = aCanvas;
         this.ctx = this.canvas.getContext('2d');
-
-        // TODO: get rid of this
-        this.lineOfTube = 250;
-        this.lineOfSecondPartOfTube = this.lineOfTube + 250;
+        this.ctx.lineWidth = 2;
+        this.tubeTop = this.canvas.height / 100 * 30;
+        this.tubeBottom = this.canvas.height / 100 * 70;
+        this.canvasLeft = this.canvas.width / 100 * 2;
+        this.canvasRight = this.canvas.width - (this.canvas.width / 100 * 2);
+        this.canvasTop = this.canvas.height / 100 * 2;
+        this.canvasBottom = this.canvas.height - (this.canvas.height / 100 * 2);
+        this.halfWidth = this.canvas.width / 2;
     }
 
     clearCanvas()
@@ -15,42 +19,50 @@ class View
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
-    CheckLaser()
+    drawTube()
     {
-
-    }
-
-    TubePart(graphicParamters, ColorStyle)
-    {
-        const startPoint = this.canvas.width / 100 * 2;
-        // Main tube part(dynamic)
         this.ctx.beginPath();
         this.ctx.strokeStyle = "lime";
 
-        // backPlateOfTube
-        this.ctx.moveTo(this.canvas.width / 100 * 2,      this.canvas.height / 100 * 30);
-        this.ctx.lineTo(this.canvas.width / 100 * 2,      this.canvas.height / 100 * 70);
+        // back plate of tube
+        this.ctx.moveTo(this.canvasLeft,      this.tubeTop);
+        this.ctx.lineTo(this.canvasLeft,      this.tubeBottom);
+
         // first part of tube
-        this.ctx.moveTo(this.canvas.width / 100 * 2,      this.canvas.height / 100 * 30);
-        this.ctx.lineTo(this.lineOfTube,                  this.canvas.height / 100 * 30);
-        this.ctx.moveTo(this.canvas.width / 100 * 2,      this.canvas.height / 100 * 70);
-        this.ctx.lineTo(this.lineOfTube,                  this.canvas.height / 100 * 70);
+        this.ctx.moveTo(this.canvasLeft,      this.tubeTop);
+        this.ctx.lineTo(this.halfWidth,     this.tubeTop);
+        this.ctx.moveTo(this.canvasLeft,      this.tubeBottom);
+        this.ctx.lineTo(this.halfWidth,     this.tubeBottom);
         // monitor part diagonales
-        this.ctx.moveTo(this.lineOfSecondPartOfTube,      this.canvas.height / 100 * 70);
-        this.ctx.lineTo(this.canvas.width,                this.canvas.height);
-        this.ctx.moveTo(this.lineOfSecondPartOfTube,      this.canvas.height / 100 * 30);
-        this.ctx.lineTo(this.canvas.width, 0);
+        this.ctx.moveTo(this.halfWidth,     this.tubeBottom);
+        this.ctx.lineTo(this.canvasRight,  this.canvasBottom);
+        this.ctx.moveTo(this.halfWidth,     this.tubeTop);
+        this.ctx.lineTo(this.canvasRight, this.canvasTop);
+
+        this.ctx.moveTo(this.canvasRight, this.canvasTop);
+        this.ctx.lineTo(this.canvasRight, this.canvasBottom);
         this.ctx.stroke();
     }
 
-    secondPartOfTube(graphicParamters)
+    drawPlates()
     {
-        this.ctx.strokeStyle = "red";
         this.ctx.beginPath();
-        this.ctx.moveTo(this.lineOfTube,              this.canvas.height / 100 * 30);
-        this.ctx.lineTo(this.lineOfSecondPartOfTube,  this.canvas.height / 100 * 30);
-        this.ctx.moveTo(this.lineOfTube,              this.canvas.height / 100 * 70);
-        this.ctx.lineTo(this.lineOfSecondPartOfTube,  this.canvas.height / 100 * 70);
+        this.ctx.strokeStyle = "lime";
+        const plateSize = 100;
+        const plateDistance = 60;
+
+        this.ctx.moveTo(this.halfWidth - (plateSize / 2),  this.tubeTop);
+        this.ctx.lineTo(this.halfWidth - (plateSize / 2),  this.tubeTop + plateDistance);
+
+        this.ctx.moveTo(this.halfWidth - plateSize,        this.tubeTop + plateDistance);
+        this.ctx.lineTo(this.halfWidth,                    this.tubeTop + plateDistance);
+
+        this.ctx.moveTo(this.halfWidth - (plateSize / 2),  this.tubeBottom);
+        this.ctx.lineTo(this.halfWidth - (plateSize / 2),  this.tubeBottom - plateDistance);
+
+        this.ctx.moveTo(this.halfWidth - plateSize,        this.tubeBottom - plateDistance);
+        this.ctx.lineTo(this.halfWidth,                    this.tubeBottom - plateDistance);
+
         this.ctx.stroke();
     }
 
@@ -104,8 +116,8 @@ class View
     drawDiagram(graphicParamters)
     {
         this.clearCanvas();
-        this.secondPartOfTube(graphicParamters);
-        this.TubePart(graphicParamters);
+        this.drawTube();
+        this.drawPlates();
         this.drawLaser(graphicParamters.laserDeflection);
         this.drawVerticalLine(graphicParamters.linePos);
         for (let i = 0; i < graphicParamters.laserDeflections.length; i++)

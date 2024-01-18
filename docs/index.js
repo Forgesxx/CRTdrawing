@@ -13,6 +13,7 @@ function collectInputParameters()
         SpreadForSpeed:   document.getElementById("SpreadForSpeed").value,
         InitialSpeed:     document.getElementById("InitialSpeed").value,
         LinePos:          document.getElementById("LinePos").value,
+        Cuantity:         document.getElementById("cuantity").value,
     };
     return result;
 }

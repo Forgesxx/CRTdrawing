@@ -35,17 +35,16 @@ function calculateDeflections(anInitialDeflection, aSpread)
 function processParameters(inputParameters)
 {
     // TODO: how to calculate deflection???
-    let aDeflection = (inputParameters.Ue * inputParameters.PlatesToMonitor) / (2 * inputParameters.Uy);
+    let aDeflection = (inputParameters.Ua * inputParameters.PlatesToMonitor) / (2 * inputParameters.Uy);
 
     // TODO: use values in pixels instead of values in milimeters.
 
-    aDeflection = aDeflection / inputParameters.Ue;
+    aDeflection = aDeflection / inputParameters.Ua;
 
     const aVz = Math.sqrt(2 * Math.abs(e) * inputParameters.Uy / ElectronMass);
 
     const result =
         {
-        // parameters that will be displayed
             // TODO: calculate Vx
             Vx: 0,
             Vy: (e * inputParameters.Uy * inputParameters.PlateLength) / (ElectronMass * aVz * inputParameters.BetweenThePlates),
