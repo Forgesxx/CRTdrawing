@@ -4,7 +4,7 @@ function collectInputParameters()
     const result =
     {
         Uy:               document.getElementById("Uy").value,
-        Ue:               document.getElementById("Ue").value,
+        Ua:               document.getElementById("Ua").value,
         AtoPlate:         document.getElementById("AtoPlate").value,
         PlatesToMonitor:  document.getElementById("PlatesToMonitor").value,
         AnodesToCatodes:  document.getElementById("AnodesToCatodes").value,
@@ -19,12 +19,16 @@ function collectInputParameters()
 
 function displayCalculatedParameters(calculatedParameters)
 {
-    document.getElementById("calculatedVx").innerHTML = calculatedParameters.Vx.toFixed(3);
-    document.getElementById("calculatedVy").innerHTML = calculatedParameters.Vy.toFixed(3);
-    document.getElementById("calculatedAx").innerHTML = calculatedParameters.Ax.toFixed(3);
-    document.getElementById("calculatedAy").innerHTML = calculatedParameters.Ay.toFixed(3);
-    document.getElementById("calculatedY").innerHTML = calculatedParameters.Y.toFixed(3);
-    document.getElementById("calculatedDeltaY").innerHTML = calculatedParameters.DeltaY.toFixed(3);
+    const resultsHTML =
+    `
+Vx = ${calculatedParameters.Vx.toFixed(3)}<br/>
+Vy = ${calculatedParameters.Vy.toFixed(3)}<br/>
+ax = ${calculatedParameters.Ax.toFixed(3)}<br/>
+ay = ${calculatedParameters.Ay.toFixed(3)}<br/>
+y = ${calculatedParameters.Y.toFixed(3)}<br/>
+delta y = ${calculatedParameters.DeltaY.toFixed(3)}<br/>
+    `;
+    document.getElementById("results").innerHTML = resultsHTML;
 }
 
 function updateUI()

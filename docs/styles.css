@@ -16,7 +16,6 @@ table
 
 th, td 
 {
-    border: 1px solid #ddd;
     padding: 10px;
     text-align: left;
 }
@@ -24,6 +23,7 @@ th, td
 th 
 {
     background-color: #f2f2f2;
+    border: 1px solid #ddd;
 }
 
 input
@@ -72,17 +72,10 @@ td
 td 
 {
     text-align: left;
-}
-
-td 
-{
     vertical-align: top;
-}
-
-td
-{
-    border: 1px solid black;
-    background-color: rgba(128, 128, 128, 0.438);
+    /* border: 1px solid black; */
+    /* background-color: rgba(128, 128, 128, 0.438); */
+    background-color: lightgray;
 }
 
 .uniqueStyle 
