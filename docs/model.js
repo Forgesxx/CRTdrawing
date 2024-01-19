@@ -42,7 +42,7 @@ function processParameters(inputParameters)
     const H = inputParameters.H;
     const d = inputParameters.d;
     const l = inputParameters.l;
-
+    const Vx = inputParameters.Vx;
     let aDeflection = (Ua * L) / (2 * Uy);
 
     // TODO: use values in pixels instead of values in milimeters.
@@ -60,8 +60,7 @@ function processParameters(inputParameters)
 
     const result =
         {
-            // TODO: calculate Vx
-            Vx: 0,
+            Vx,
             Vy,
             // TODO: calculate Ax
             Ax: 0,

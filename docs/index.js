@@ -11,7 +11,7 @@ function collectInputParameters()
         d:                Number(document.getElementById("d").value),
         l:                Number(document.getElementById("l").value),
         SpreadForSpeed:   Number(document.getElementById("SpreadForSpeed").value),
-        InitialSpeed:     Number(document.getElementById("InitialSpeed").value),
+        Vx:               Number(document.getElementById("Vx").value),
         LinePos:          Number(document.getElementById("LinePos").value),
         Cuantity:         Number(document.getElementById("cuantity").value),
     };
