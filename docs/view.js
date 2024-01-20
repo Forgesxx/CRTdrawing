@@ -104,22 +104,12 @@ class View
         this.ctx.stroke();
     }
 
-    drawVerticalLine(linePos)
-    {
-        this.ctx.strokeStyle = "white";
-        this.ctx.beginPath();
-        this.ctx.moveTo(linePos, 0);
-        this.ctx.lineTo(linePos, this.canvas.height);
-        this.ctx.stroke();
-    }
-
     drawDiagram(graphicParamters)
     {
         this.clearCanvas();
         this.drawTube();
         this.drawPlates();
         this.drawLaser(graphicParamters.laserDeflection);
-        this.drawVerticalLine(graphicParamters.linePos);
         for (let i = 0; i < graphicParamters.laserDeflections.length; i++)
         {
             this.drawLaser(graphicParamters.laserDeflections[i]);

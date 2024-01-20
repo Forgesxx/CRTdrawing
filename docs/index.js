@@ -12,7 +12,6 @@ function collectInputParameters()
         l:                Number(document.getElementById("l").value),
         SpreadForSpeed:   Number(document.getElementById("SpreadForSpeed").value),
         Vx:               Number(document.getElementById("Vx").value),
-        LinePos:          Number(document.getElementById("LinePos").value),
         Cuantity:         Number(document.getElementById("cuantity").value),
     };
     return result;
@@ -45,7 +44,6 @@ function updateUI()
 
     graphicParamters.laserDeflection = calculatedParameters.deflection;
     graphicParamters.laserDeflections = calculateDeflections(calculatedParameters.deflection, spread);
-    graphicParamters.linePos = inputParameters.LinePos;
 
     view.drawDiagram(graphicParamters);
     displayCalculatedParameters(calculatedParameters);
