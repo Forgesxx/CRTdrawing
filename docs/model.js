@@ -8,6 +8,16 @@ function getRandomInRange(min, max)
     return Math.random() * (max - min) + min;
 }
 
+function mmToMeters(aNumber)
+{
+    return aNumber / 1000;
+}
+
+function metersToMm(aNumber)
+{
+    return aNumber * 1000;
+}
+
 function calculateDeflections(anInitialDeflection, aSpread)
 {
     const result = [];
@@ -32,51 +42,49 @@ function calculateDeflections(anInitialDeflection, aSpread)
     return result;
 }
 
-function processParameters(inputParameters)
+function processParameters(inputParameters, expectedOutput)
 {
-    // TODO: how to calculate deflection???
-    const L = inputParameters.L;
+    const L = mmToMeters(inputParameters.L);
     const Ua = inputParameters.Ua;
     const Uy = inputParameters.Uy;
-    const B = inputParameters.B;
-    const H = inputParameters.H;
-    const d = inputParameters.d;
-    const l = inputParameters.l;
-    const Vx = inputParameters.Vx;
-    let aDeflection = (Ua * L) / (2 * Uy);
+    const B = mmToMeters(inputParameters.B);
+    const H = mmToMeters(inputParameters.H); // from annode to cathode
+    const d = mmToMeters(inputParameters.d); // distance between plates
+    const l = mmToMeters(inputParameters.l); // plates Length
+    const Vx0 = inputParameters.Vx;
+    const eAbs = Math.abs(e);
 
-    // TODO: use values in pixels instead of values in milimeters.
+    const UaPercent = Ua / 100;
 
-    aDeflection = aDeflection / Ua;
-
-    const h = (Uy * L * e) / (2 * d * Ua);
+    const Vx = Math.sqrt(2 * eAbs * Ua / m);
+    // const Vx2 = Math.sqrt(2 * eAbs * (Ua + (UaPercent * 7.1)) / m);
 
     // -------------------------------------
     const Ey = (Uy / d);
-    const Ay = (e * Uy) / (m * d);
-    const Vz = Math.sqrt(2 * Math.abs(e) * Uy / m);
-    const Vy = (e * Uy * l) / (m * Vz * d);
+    const Ex = (Ua / H);
+    const Ay = (e / m) * Ey;
+    const Ax = (e / m) * Ex;
+
     // -------------------------------------
+
+    const h = (Uy * L * Ey) / (2 * d * Ua);
+
+    const h2 = (eAbs / m) * Ey * (l / (Vx0 * Vx0)) * ((l / 2) + L);
+
+    const h3 = ((L + (l / 2)) * Ey * l) / (2 * d * Ex);
+
+    const Vy = (e / m) * Ey * (l / Vx0);
 
     const result =
         {
             Vx,
             Vy,
-            // TODO: calculate Ax
-            Ax: 0,
-            Ay,
-            // TODO: calculate Y
-            Y: h,
-            // TODO: calculate deltaY
-            DeltaY: 0,
-            // ------
-            Ey,
-            Vz,
-            deflection: aDeflection,
-            // TODO: DeltaTime
-            DeltaTime: 0,
+            y: metersToMm(h),
+            y2: metersToMm(h2),
+            y3: metersToMm(h3),
         };
 
-    console.log(result);
     return result;
 }
+
+module.exports.processParameters = processParameters;
