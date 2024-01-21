@@ -3,6 +3,8 @@ const numOfLasers = 10;
 const e = -1.602e-19;
 const m = 9.109e-31; // Electron Mass
 
+const deltaT = 1E-10;
+
 function getRandomInRange(min, max)
 {
     return Math.random() * (max - min) + min;
@@ -10,7 +12,8 @@ function getRandomInRange(min, max)
 
 function mmToMeters(aNumber)
 {
-    return aNumber / 1000;
+    const result = aNumber / 1000;
+    return result;
 }
 
 function metersToMm(aNumber)
@@ -54,18 +57,14 @@ function processParameters(inputParameters, expectedOutput)
     const Vx0 = inputParameters.Vx;
     const eAbs = Math.abs(e);
 
-    const UaPercent = Ua / 100;
-
-    const Vx = Math.sqrt(2 * eAbs * Ua / m);
-    // const Vx2 = Math.sqrt(2 * eAbs * (Ua + (UaPercent * 7.1)) / m);
-
     // -------------------------------------
     const Ey = (Uy / d);
     const Ex = (Ua / H);
-    const Ay = (e / m) * Ey;
-    const Ax = (e / m) * Ex;
-
+    const Ay = (eAbs / m) * Ey;
+    const Ax = (eAbs / m) * Ex;
     // -------------------------------------
+
+    const Vx = Math.sqrt((Vx0 * Vx0) + (2 * Ax * H));
 
     const h = (Uy * L * Ey) / (2 * d * Ua);
 
@@ -73,7 +72,12 @@ function processParameters(inputParameters, expectedOutput)
 
     const h3 = ((L + (l / 2)) * Ey * l) / (2 * d * Ex);
 
-    const Vy = (e / m) * Ey * (l / Vx0);
+    // const Vy = (e / m) * Ey * (l / Vx0);
+
+    // const Vy = Math.sqrt((2 * Ay * (B + L)));
+    // const Vy = Math.sqrt((2 * Ay * L));
+    // const Vy = Math.sqrt((2 * Ay * (B)));
+    const Vy = Math.sqrt((2 * Ay * (d)));
 
     const result =
         {
