@@ -14,80 +14,94 @@
         <script type="text/javascript" src="index.js"></script>
     </head>
     <body>
-        <input type="range" id="LinePos" name="LinePos" min="0" max="1000" class="uniqueStyle" value="1" oninput="updateUI()" ><br>
         <canvas id="canvas" width="1000" height="600">  </canvas>
 
         <table style="margin: auto;">
             <tr>
                 <td>
-                    <p>Voltage (V)</p>
-                    <label for="uy">Uy:</label><br>
-                    <input type="number" id="Uy" name="uy" min="-100" value="10" onchange="updateUI()">
-                    <br>
-                    <label for="ue">Ue:</label><br>
-                    <input type="number" id="Ue" name="ue" min="-100" value="1000" onchange="updateUI()">
+                    <fieldset>
+                        <div id="results">
+                        </div>    
+                    </fieldset>
+                </td>
+
+                <td>
+                    <fieldset>
+                        <legend>Voltage (V)</legend>
+
+                        <label for="uy">Uy :</label><br>
+                        <input type="number" id="Uy" name="uy" min="-100" value="10" onchange="updateUI()"><br/>
+                        <label for="ua">Ua :</label><br>
+                        <input type="number" id="Ua" name="ua" min="-100" value="1000" onchange="updateUI()">
+                    </fieldset>
+                    <label for="cuantity">Cuantity :</label>
+                    <input type="number" id="cuantity" name="cuantity" min="1" value="1" onchange="updateUI()"><br/>
+
                 </td>
     
                 <td>
-                    <p>Distance (mm)</p>
-                    <label for="AtoPlate">Anodes to plates(B):</label><br>
-                    <input type="number" id="AtoPlate" name="AtoPlate" min="1" value="30" onchange="updateUI()">
-                    <br>
-                    <label for="PlatesToMonitor">Plates to monitor(L):</label><br>
-                    <input type="number" id="PlatesToMonitor" name="PlatesToMonitor" min="1" value="150" onchange="updateUI()">
-                    <br>
-                    <label for="AnodesToCatodes">Anodes to Catodes(H):</label><br>
-                    <input type="number" id="AnodesToCatodes" name="Anodes to Catodes" min="-100" max="100" value="100" onchange="updateUI()">
-                </td>
-    
-                <td>
-                    <p>Distance (mm)</p>
-                
-                    <label for="BetweenThePlates">Between the plates:</label><br>
-                    <input type="number" id="BetweenThePlates" name="Between the plates" min="1" value="10" onchange="updateUI()">
-                    <br>
-                    <label for="PlateLength">Plate length:</label><br>
-                    <input type="number" id="PlateLength" name="Plate length" min="1" value="20" onchange="updateUI()">
-                </td>
-    
-                <td>
-                    <p>Speed</p>
-                    <label for="SpreadForSpeed">Spread for speed ±:</label><br>
-                    <input type="number" id="SpreadForSpeed" name="Spread for speed" min="0" max="100" value="0" onchange="updateUI()"><br>
-                    <label for="InitialSpeed">Initial speed:</label><br>
-                    <input type="number" id="InitialSpeed" name="Initial speed" min="1" value="5000000" onchange="updateUI()">
-                    <br>
-                </td>
-    
-                <td>
-                    <table>
-                        <tr>
-                            <td>Vx:</td>
-                            <td><output id="calculatedVx"></output></td>
-                        </tr>
-                        <tr>
-                            <td>Vy:</td>
-                            <td><output id="calculatedVy"></output></td>
-                        </tr>
-                        <tr>
-                            <td>ax:</td>
-                            <td><output id="calculatedAx"></output></td>
-                        </tr>
-                        <tr>
-                            <td>ay:</td>
-                            <td><output id="calculatedAy"></output></td>
-                        </tr>
-                        <tr>
-                            <td>y:</td>
-                            <td><output id="calculatedY"></output></td>
-                        </tr>
-                        <tr>
-                            <td>deltay:</td>
-                            <td><output id="calculatedDeltaY"></output></td>
-                        </tr>
-                    </table>
+                    <fieldset>
+                        <legend>Distance (mm)</legend>
+
+                        <table>
+                            <tr>
+                                <td>
+                                    <label>from anodes to plates, B</label>
+                                </td>
+                                <td>
+                                    <label>Initial speed:</label>
+                                </td>
+                                <td>
+                                    <label>spread:</label><br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="number" id="B" min="1" value="30" onchange="updateUI()">
+                                </td>
+                                <td>
+                                    <input type="number" id="Vx" min="1" value="5000000" onchange="updateUI()"> ±
+                                </td>
+                                <td>
+                                    <input type="number" id="SpreadForSpeed" name="Spread for speed" min="0" max="100" value="0" onchange="updateUI()">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>from plates to monitor, L</label>
+                                </td>
+                                <td>
+                                    <label>between plates, d</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="number" id="L" min="1" value="150" onchange="updateUI()">
+                                </td>
+                                <td>
+                                    <input type="number" id="d" min="1" value="10" onchange="updateUI()">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>from annode to catode, H</label>
+                                </td>
+                                <td>
+                                    <label>plates length, l</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="number" id="H" min="1" max="100" value="100" onchange="updateUI()">
+                                </td>
+                                <td>
+                                    <input type="number" id="l" min="1" value="20" onchange="updateUI()">
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
                 </td>
             </tr>
-        </table>    
-    </body>    
+        </table>
+    </body>
 </html>

@@ -1,11 +1,21 @@
 const numOfLasers = 10;
 
 const e = -1.602e-19;
-const ElectronMass = 9.109e-31;
+const m = 9.109e-31; // Electron Mass
 
 function getRandomInRange(min, max)
 {
     return Math.random() * (max - min) + min;
+}
+
+function mmToMeters(aNumber)
+{
+    return aNumber / 1000;
+}
+
+function metersToMm(aNumber)
+{
+    return aNumber * 1000;
 }
 
 function calculateDeflections(anInitialDeflection, aSpread)
@@ -32,38 +42,49 @@ function calculateDeflections(anInitialDeflection, aSpread)
     return result;
 }
 
-function processParameters(inputParameters)
+function processParameters(inputParameters, expectedOutput)
 {
-    // TODO: how to calculate deflection???
-    let aDeflection = (inputParameters.Ue * inputParameters.PlatesToMonitor) / (2 * inputParameters.Uy);
+    const L = mmToMeters(inputParameters.L);
+    const Ua = inputParameters.Ua;
+    const Uy = inputParameters.Uy;
+    const B = mmToMeters(inputParameters.B);
+    const H = mmToMeters(inputParameters.H); // from annode to cathode
+    const d = mmToMeters(inputParameters.d); // distance between plates
+    const l = mmToMeters(inputParameters.l); // plates Length
+    const Vx0 = inputParameters.Vx;
+    const eAbs = Math.abs(e);
 
-    // TODO: use values in pixels instead of values in milimeters.
+    const UaPercent = Ua / 100;
 
-    aDeflection = aDeflection / inputParameters.Ue;
+    const Vx = Math.sqrt(2 * eAbs * Ua / m);
+    // const Vx2 = Math.sqrt(2 * eAbs * (Ua + (UaPercent * 7.1)) / m);
 
-    const aVz = Math.sqrt(2 * Math.abs(e) * inputParameters.Uy / ElectronMass);
+    // -------------------------------------
+    const Ey = (Uy / d);
+    const Ex = (Ua / H);
+    const Ay = (e / m) * Ey;
+    const Ax = (e / m) * Ex;
+
+    // -------------------------------------
+
+    const h = (Uy * L * Ey) / (2 * d * Ua);
+
+    const h2 = (eAbs / m) * Ey * (l / (Vx0 * Vx0)) * ((l / 2) + L);
+
+    const h3 = ((L + (l / 2)) * Ey * l) / (2 * d * Ex);
+
+    const Vy = (e / m) * Ey * (l / Vx0);
 
     const result =
         {
-        // parameters that will be displayed
-            // TODO: calculate Vx
-            Vx: 0,
-            Vy: (e * inputParameters.Uy * inputParameters.PlateLength) / (ElectronMass * aVz * inputParameters.BetweenThePlates),
-            // TODO: calculate Ax
-            Ax: 0,
-            Ay: (e * inputParameters.Uy) / (ElectronMass * inputParameters.BetweenThePlates),
-            // TODO: calculate Y
-            Y: 0,
-            // TODO: calculate deltaY
-            DeltaY: 0,
-            // ------
-            Ey: (inputParameters.Uy / inputParameters.BetweenThePlates),
-            Vz: aVz,
-            deflection: aDeflection,
-            // TODO: DeltaTime
-            DeltaTime: 0,
+            Vx,
+            Vy,
+            y: metersToMm(h),
+            y2: metersToMm(h2),
+            y3: metersToMm(h3),
         };
 
-    console.log(result);
     return result;
 }
+
+module.exports.processParameters = processParameters;

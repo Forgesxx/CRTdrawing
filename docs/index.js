@@ -3,28 +3,32 @@ function collectInputParameters()
 {
     const result =
     {
-        Uy:               document.getElementById("Uy").value,
-        Ue:               document.getElementById("Ue").value,
-        AtoPlate:         document.getElementById("AtoPlate").value,
-        PlatesToMonitor:  document.getElementById("PlatesToMonitor").value,
-        AnodesToCatodes:  document.getElementById("AnodesToCatodes").value,
-        BetweenThePlates: document.getElementById("BetweenThePlates").value,
-        PlateLength:      document.getElementById("PlateLength").value,
-        SpreadForSpeed:   document.getElementById("SpreadForSpeed").value,
-        InitialSpeed:     document.getElementById("InitialSpeed").value,
-        LinePos:          document.getElementById("LinePos").value,
+        Uy:               Number(document.getElementById("Uy").value),
+        Ua:               Number(document.getElementById("Ua").value),
+        B:                Number(document.getElementById("B").value),
+        L:                Number(document.getElementById("L").value),
+        H:                Number(document.getElementById("H").value),
+        d:                Number(document.getElementById("d").value),
+        l:                Number(document.getElementById("l").value),
+        SpreadForSpeed:   Number(document.getElementById("SpreadForSpeed").value),
+        Vx:               Number(document.getElementById("Vx").value),
+        Cuantity:         Number(document.getElementById("cuantity").value),
     };
     return result;
 }
 
 function displayCalculatedParameters(calculatedParameters)
 {
-    document.getElementById("calculatedVx").innerHTML = calculatedParameters.Vx.toFixed(3);
-    document.getElementById("calculatedVy").innerHTML = calculatedParameters.Vy.toFixed(3);
-    document.getElementById("calculatedAx").innerHTML = calculatedParameters.Ax.toFixed(3);
-    document.getElementById("calculatedAy").innerHTML = calculatedParameters.Ay.toFixed(3);
-    document.getElementById("calculatedY").innerHTML = calculatedParameters.Y.toFixed(3);
-    document.getElementById("calculatedDeltaY").innerHTML = calculatedParameters.DeltaY.toFixed(3);
+    const resultsHTML =
+    `
+Vx = ${calculatedParameters.Vx.toFixed(3)}<br/>
+Vy = ${calculatedParameters.Vy.toFixed(3)}<br/>
+ax = ${calculatedParameters.Ax.toFixed(3)}<br/>
+ay = ${calculatedParameters.Ay.toFixed(3)}<br/>
+y = ${calculatedParameters.Y.toFixed(3)}<br/>
+delta y = ${calculatedParameters.DeltaY.toFixed(3)}<br/>
+    `;
+    document.getElementById("results").innerHTML = resultsHTML;
 }
 
 function updateUI()
@@ -40,7 +44,6 @@ function updateUI()
 
     graphicParamters.laserDeflection = calculatedParameters.deflection;
     graphicParamters.laserDeflections = calculateDeflections(calculatedParameters.deflection, spread);
-    graphicParamters.linePos = inputParameters.LinePos;
 
     view.drawDiagram(graphicParamters);
     displayCalculatedParameters(calculatedParameters);
