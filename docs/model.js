@@ -66,29 +66,29 @@ function processParameters(inputParameters, expectedOutput)
 
     const Vx = Math.sqrt((Vx0 * Vx0) + (2 * Ax * H));
 
-    const h = (Uy * L * Ey) / (2 * d * Ua);
+    // const y = (Uy * L * Ey) / (2 * d * Ua);
 
-    const h2 = (eAbs / m) * Ey * (l / (Vx0 * Vx0)) * ((l / 2) + L);
+    // const y2 = (eAbs / m) * Ey * (l / (Vx0 * Vx0)) * ((l / 2) + L);
 
-    const h3 = ((L + (l / 2)) * Ey * l) / (2 * d * Ex);
+    const y = ((L + (l / 2)) * Ey * l) / (2 * d * Ex);
 
     // const Vy = (e / m) * Ey * (l / Vx0);
 
     // const Vy = Math.sqrt((2 * Ay * (B + L)));
     // const Vy = Math.sqrt((2 * Ay * L));
     // const Vy = Math.sqrt((2 * Ay * (B)));
-    const Vy = Math.sqrt((2 * Ay * (d)));
+    const Vy = Math.sqrt((Vx0 * Vx0) + (2 * Ay * (d)));
 
     const result =
         {
             Vx,
             Vy,
-            y: metersToMm(h),
-            y2: metersToMm(h2),
-            y3: metersToMm(h3),
+            // y: metersToMm(y),
+            // y2: metersToMm(y2),
+            y: metersToMm(y),
         };
 
     return result;
 }
 
-module.exports.processParameters = processParameters;
+// module.exports.processParameters = processParameters;

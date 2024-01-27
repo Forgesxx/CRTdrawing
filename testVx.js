@@ -41,33 +41,13 @@ const eAbs = Math.abs(e);
 const Ex = (Ua / H);
 const Ax = (eAbs / m) * Ex;
 
+// Vx from book
 const Vx = Math.sqrt(2 * eAbs * Ua / m);
 
-// let Vx2 = Vx0;
-
-const Vx3 = Math.sqrt((Vx0 * Vx0) + (2 * Ax * H));
-
-// let S = 0;
-
-// let i = 1;
-
-// while (S < H)
-// {
-//     Vx2 = Vx2 + (Ax * deltaT);
-//     const t = (i * deltaT);
-//     S = (Vx0 * t) + ((Ax * t * t) / 2);
-//     i++;
-// }
-
-// for (let i = 1; i < 10; i++)
-// {
-//     Vx2 = Vx2 + (Ax * deltaT);
-//     const t = (i * deltaT);
-//     S = (Vx0 * t) + ((Ax * t * t) / 2);
-//     console.log(metersToMm(S));
-// }
+// calculated by mechanic
+const Vx2 = Math.sqrt((Vx0 * Vx0) + (2 * Ax * H));
 
 console.log("expected: " + expectedVx);
-// console.log("obtained Vx: " + Vx);
-// console.log("obtained Vx2: " + Vx2);
-console.log("obtained Vx3: " + Vx3);
+console.log("obtained Vx: " + Vx);
+console.log("obtained Ax: " + Ax);
+console.log("obtained Vx2: " + Vx2);
