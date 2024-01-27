@@ -81,7 +81,8 @@ class View
         const endPoint =
         {
             x: this.canvas.width,
-            y: halfHeigh + (halfHeigh * aDeflection),
+            // y: halfHeigh + (halfHeigh * aDeflection),
+            y: halfHeigh - (aDeflection),
         };
 
         if (endPoint.y < 0)
