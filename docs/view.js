@@ -1,5 +1,8 @@
 class View
 {
+    static plateSize = 100;
+    static plateDistance = 60;
+
     constructor(aCanvas)
     {
         this.canvas = aCanvas;
@@ -48,20 +51,18 @@ class View
     {
         this.ctx.beginPath();
         this.ctx.strokeStyle = "lime";
-        const plateSize = 100;
-        const plateDistance = 60;
 
-        this.ctx.moveTo(this.halfWidth - (plateSize / 2),  this.tubeTop);
-        this.ctx.lineTo(this.halfWidth - (plateSize / 2),  this.tubeTop + plateDistance);
+        this.ctx.moveTo(this.halfWidth - (View.plateSize / 2),  this.tubeTop);
+        this.ctx.lineTo(this.halfWidth - (View.plateSize / 2),  this.tubeTop + View.plateDistance);
 
-        this.ctx.moveTo(this.halfWidth - plateSize,        this.tubeTop + plateDistance);
-        this.ctx.lineTo(this.halfWidth,                    this.tubeTop + plateDistance);
+        this.ctx.moveTo(this.halfWidth - View.plateSize,        this.tubeTop + View.plateDistance);
+        this.ctx.lineTo(this.halfWidth,                    this.tubeTop + View.plateDistance);
 
-        this.ctx.moveTo(this.halfWidth - (plateSize / 2),  this.tubeBottom);
-        this.ctx.lineTo(this.halfWidth - (plateSize / 2),  this.tubeBottom - plateDistance);
+        this.ctx.moveTo(this.halfWidth - (View.plateSize / 2),  this.tubeBottom);
+        this.ctx.lineTo(this.halfWidth - (View.plateSize / 2),  this.tubeBottom - View.plateDistance);
 
-        this.ctx.moveTo(this.halfWidth - plateSize,        this.tubeBottom - plateDistance);
-        this.ctx.lineTo(this.halfWidth,                    this.tubeBottom - plateDistance);
+        this.ctx.moveTo(this.halfWidth - View.plateSize,        this.tubeBottom - View.plateDistance);
+        this.ctx.lineTo(this.halfWidth,                    this.tubeBottom - View.plateDistance);
 
         this.ctx.stroke();
     }
@@ -74,14 +75,15 @@ class View
 
         const controlPoint =
         {
-            x: this.canvas.width / 2,
+            x: (this.canvas.width / 2) - (View.plateSize / 2),
             y: halfHeigh,
         };
 
         const endPoint =
         {
             x: this.canvas.width,
-            y: halfHeigh + (halfHeigh * aDeflection),
+            // y: halfHeigh + (halfHeigh * aDeflection),
+            y: halfHeigh - (aDeflection),
         };
 
         if (endPoint.y < 0)

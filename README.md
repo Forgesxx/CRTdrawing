@@ -2,16 +2,16 @@
 
 # Motivation
 
-This project is intendent to replace existing demo app for Physic course.
+This project is intended to replace the existing demo app for the Physic course.
 
-1. Make it launchable on all systems: Web page can be opened in all browsers. It will make students be independent of devices they have.
-2. Apps becomes obsolete. It could be possible they will not be launchable on future versions of Windows.
-3. Existing apps has bugs:
- - russian laguage only. What about international students at least?
- - Formulas Labels are not the same as in application: 
+1. Make it launchable on all systems: the Web page can be opened in all browsers. It will make students independent of the devices they have.
+2. Apps become obsolete. It could be possible they will not be launchable on future versions of Windows.
+3. Existing apps have bugs:
+ - russian language only. What about international students at least?
+ - Formula labels are not the same as in application: 
   - "h" in book, and "y" in application
-  - "Vz" in book, and "Vx" in application
- - ray deflection should be from the middle of plates, not from beggining
+  - "Vz" in the book, and "Vx" in the application
+  - formula for Vx(Vz) that in the book, does not give us the result, that the application gives. But that result, that application gives - give us another formula, but that formula is absent in the book.
+ - ray deflection should be from the middle of plates, not from the beginning
 
-With all below, totally it makes demotivating effect on students.
-
+All of the below have a demotivating effect on students.

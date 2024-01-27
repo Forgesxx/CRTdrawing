@@ -23,12 +23,16 @@ function displayCalculatedParameters(calculatedParameters)
     `
 Vx = ${calculatedParameters.Vx.toFixed(3)}<br/>
 Vy = ${calculatedParameters.Vy.toFixed(3)}<br/>
-ax = ${calculatedParameters.Ax.toFixed(3)}<br/>
-ay = ${calculatedParameters.Ay.toFixed(3)}<br/>
-y = ${calculatedParameters.Y.toFixed(3)}<br/>
-delta y = ${calculatedParameters.DeltaY.toFixed(3)}<br/>
+y = ${calculatedParameters.y.toFixed(3)}<br/>
     `;
     document.getElementById("results").innerHTML = resultsHTML;
+}
+
+function convertMMToPixels(L, y)
+{
+    const halfWidth = view.halfWidth;
+    const result = (y * halfWidth) / L;
+    return result;
 }
 
 function updateUI()
@@ -42,7 +46,7 @@ function updateUI()
 
     const spread = inputParameters.SpreadForSpeed / 100;
 
-    graphicParamters.laserDeflection = calculatedParameters.deflection;
+    graphicParamters.laserDeflection = convertMMToPixels(inputParameters.L, calculatedParameters.y);
     graphicParamters.laserDeflections = calculateDeflections(calculatedParameters.deflection, spread);
 
     view.drawDiagram(graphicParamters);
