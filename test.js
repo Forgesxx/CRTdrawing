@@ -7,8 +7,11 @@ try
     {
         const data = testData[i];
         const output = model.processParameters(data.input, data.output);
-        console.log("expected: " + JSON.stringify(data.output));
-        console.log("obtained: " + JSON.stringify(output));
+        console.table(
+            {
+                expected: data.output,
+                obtained: output,
+            });
     }
 }
 catch(error)

@@ -10,8 +10,10 @@ function metersToMm(aNumber)
 
 const expectedVx = "19407430,3205757";
 
-const e = -1.602e-19;
-const m = 9.109e-31; // Electron Mass
+// const e = -1.602e-19;
+const e = -1.6e-19;
+// const m = 9.109e-31; // Electron Mass
+const m = 9.1e-31; // Electron Mass
 
 const deltaT = 1E-10;
 
@@ -42,7 +44,7 @@ const Ex = (Ua / H);
 const Ax = (eAbs / m) * Ex;
 
 // Vx from book
-const Vx = Math.sqrt(2 * eAbs * Ua / m);
+const Vx = Math.sqrt((2 * eAbs * Ua / m) + (Vx0 * Vx0));
 
 // calculated by mechanic
 const Vx2 = Math.sqrt((Vx0 * Vx0) + (2 * Ax * H));

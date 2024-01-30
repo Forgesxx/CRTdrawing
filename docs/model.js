@@ -1,7 +1,9 @@
 const numOfLasers = 10;
 
-const e = -1.602e-19;
-const m = 9.109e-31; // Electron Mass
+// const e = -1.602e-19;
+const e = -1.6e-19;
+// const m = 9.109e-31; // Electron Mass
+const m = 9.1e-31; // Electron Mass
 
 const deltaT = 1E-10;
 
@@ -62,33 +64,36 @@ function processParameters(inputParameters, expectedOutput)
     const Ex = (Ua / H);
     const Ay = (eAbs / m) * Ey;
     const Ax = (eAbs / m) * Ex;
+    const Vx = Math.sqrt((Vx0 * Vx0) + (2 * Ax * H));
     // -------------------------------------
 
-    const Vx = Math.sqrt((Vx0 * Vx0) + (2 * Ax * H));
-
-    // const y = (Uy * L * Ey) / (2 * d * Ua);
-
-    // const y2 = (eAbs / m) * Ey * (l / (Vx0 * Vx0)) * ((l / 2) + L);
+    const Vy = Math.sqrt(2 * Math.abs(Ay) * l);
 
     const y = ((L + (l / 2)) * Ey * l) / (2 * d * Ex);
 
-    // const Vy = (e / m) * Ey * (l / Vx0);
+    // const y = (eAbs / m) * Ey * (l / (Vx * Vx)) * ((l / 2) + L);
 
-    // const Vy = Math.sqrt((2 * Ay * (B + L)));
-    // const Vy = Math.sqrt((2 * Ay * L));
-    // const Vy = Math.sqrt((2 * Ay * (B)));
-    const Vy = Math.sqrt((Vx0 * Vx0) + (2 * Ay * (d)));
+    // const y = (Uy * L * Ey) / (2 * d * Ua);
+
+    // const y = ((Uy * l) / (2 * d * Vy)) * (L + (l / 2));
+
+    // const t = l / Vx;
+    // const t2 = L / Vx;
+
+    // const y1 = (Ay * (t * t)) / 2;
+    // const y2 = Vy * t2;
+    // const y = y1 + y2;
 
     const result =
         {
             Vx,
             Vy,
-            // y: metersToMm(y),
-            // y2: metersToMm(y2),
             y: metersToMm(y),
+            // y2: metersToMm(y2),
+            // y3: metersToMm(y3),
         };
 
     return result;
 }
 
-// module.exports.processParameters = processParameters;
+module.exports.processParameters = processParameters;
