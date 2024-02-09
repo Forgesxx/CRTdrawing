@@ -38,7 +38,6 @@ function convertMMToPixels(L, y)
 function updateUI()
 {
     const inputParameters = collectInputParameters();
-    console.log(inputParameters);
 
     const calculatedParameters = processParameters(inputParameters);
 
